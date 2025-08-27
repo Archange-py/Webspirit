@@ -1,0 +1,185 @@
+{
+  "audio": {
+    "m4a": {
+      "FORMAT": "bestaudio[ext=m4a]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "m4a"
+        }
+      ]
+    },
+    "mp3": {
+      "FORMAT": "bestaudio[ext=mp3]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "mp3"
+        }
+      ]
+    },
+    "ogg": {
+      "FORMAT": "bestaudio[ext=ogg]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "vorbis"
+        }
+      ]
+    },
+    "opus": {
+      "FORMAT": "bestaudio[ext=opus]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "opus"
+        }
+      ]
+    },
+    "flac": {
+      "FORMAT": "bestaudio[ext=flac]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "flac"
+        }
+      ]
+    },
+    "wav": {
+      "FORMAT": "bestaudio[ext=wav]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "wav"
+        }
+      ]
+    },
+    "aac": {
+      "FORMAT": "bestaudio[ext=aac]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "aac"
+        }
+      ]
+    },
+    "alac": {
+      "FORMAT": "bestaudio[ext=alac]/bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegExtractAudio",
+          "preferredcodec": "alac"
+        }
+      ]
+    }
+  },
+  "audio_video": {
+    "best": {
+      "FORMAT": "bestvideo+bestaudio/best",
+      "POSTPROCESSORS": []
+    },
+    "mp4": {
+      "FORMAT": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4",
+      "POSTPROCESSORS": []
+    },
+    "webm": {
+      "FORMAT": "bestvideo[ext=webm]+bestaudio[ext=webm]/webm",
+      "POSTPROCESSORS": []
+    },
+    "mkv": {
+      "FORMAT": "bestvideo+bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegVideoConvertor",
+          "preferedformat": "mkv"
+        }
+      ]
+    },
+    "flv": {
+      "FORMAT": "bestvideo+bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegVideoConvertor",
+          "preferedformat": "flv"
+        }
+      ]
+    },
+    "mov": {
+      "FORMAT": "bestvideo+bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegVideoConvertor",
+          "preferedformat": "mov"
+        }
+      ]
+    },
+    "avi": {
+      "FORMAT": "bestvideo+bestaudio/best",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegVideoConvertor",
+          "preferedformat": "avi"
+        }
+      ]
+    }
+  },
+  "video": {
+    "best": {
+      "FORMAT": "bestvideo",
+      "POSTPROCESSORS": []
+    },
+    "mp4": {
+      "FORMAT": "bestvideo[ext=mp4]",
+      "POSTPROCESSORS": []
+    },
+    "webm": {
+      "FORMAT": "bestvideo[ext=webm]",
+      "POSTPROCESSORS": []
+    },
+    "mkv": {
+      "FORMAT": "bestvideo[ext=webm]",
+      "POSTPROCESSORS": []
+    },
+    "flv": {
+      "FORMAT": "bestvideo",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegVideoConvertor",
+          "preferedformat": "flv"
+        }
+      ]
+    },
+    "mov": {
+      "FORMAT": "bestvideo",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegVideoConvertor",
+          "preferedformat": "mov"
+        }
+      ]
+    },
+    "avi": {
+      "FORMAT": "bestvideo",
+      "POSTPROCESSORS": [
+        {
+          "key": "FFmpegVideoConvertor",
+          "preferedformat": "avi"
+        }
+      ]
+    }
+  },
+  "subtitles": {
+    "vtt": {
+      "FORMAT": "bestvideo+bestaudio/best",
+      "SUBTITLESFORMAT": "vtt",
+      "WRITESUBTITLES": true,
+      "POSTPROCESSORS": []
+    },
+    "json3": {
+      "FORMAT": "bestvideo+bestaudio/best",
+      "SUBTITLESFORMAT": "json3",
+      "WRITESUBTITLES": true,
+      "POSTPROCESSORS": []
+    }
+  }
+}

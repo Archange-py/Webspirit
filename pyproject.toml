@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webspirit"
+version = "0.0.1"
+description = "A Python package for downloading resources from the web and organizing your favorites"
+keywords = ["webspirit", "yt-dlp", "POO", "YouTube", "download", "favorites", "collections", "web-scrapping"]
+readme = "README.md"
+requires-python = ">=3.12.4"
+license = {text = "MIT"}
+
+authors = [
+  { name = "Solange", email = "archange_paradise@proton.me" }
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+
+dependencies = [
+    "rich==14.0.0",
+    "pandas==2.3.0",
+    "textual==3.5.0",
+    "colorlog==6.9.0",
+    "yt-dlp==2025.6.9"
+]
+
+[project.urls]
+Homepage = "https://github.com/Archange-py/Webspirit"
+Repository = "https://github.com/Archange-py/Webspirit"
+Library = "https://pypi.org/project/webspirit/"
+
+[project.scripts]
+webspirit = "webspirit.webspirit:main"
+
+[project.optional-dependencies]
+dev = ["pytest"]

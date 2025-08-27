@@ -1,0 +1,9 @@
+{
+    "Theme": "default",
+    "MusicPath": "default",
+    "Music": true,
+    "Animation": true,
+
+    "DownloadType": "audio_video",
+    "DownloadFormat": "mp4"
+}
