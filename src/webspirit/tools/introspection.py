@@ -2,7 +2,7 @@ from typing import Any
 
 
 def show(obj: Any):
-    print('str :', str(obj))
+    print('str  :', str(obj))
     print('repr :', repr(obj))
 
 def exception(obj: Any, *args, **kwargs) -> Exception | None:

@@ -2,6 +2,7 @@
 Constants of directory, names and absolute path to manipulate files.
 """
 
+
 from os.path import dirname
 
 from pathlib import Path

@@ -14,10 +14,12 @@ R = TypeVar("R")
 
 
 class ErrorContextManager:
-    def __init__(self, message: str, level: int = ERROR, logger: Logger = LOGGER):
-        self.message = message
+    def __init__(self, message: str = '', level: int = WARNING, logger: Logger = LOGGER, let: bool = True, error: bool = False):
+        self.let = let
         self.level = level
+        self.error = error
         self.logger = logger
+        self.message = message
 
     def __call__(self, fonction: Callable[P, R]) -> Callable[P, R]:
         @wraps(fonction)
@@ -31,14 +33,25 @@ class ErrorContextManager:
         return self
 
     def __exit__(self, exc_type: type[BaseException] | None, exc_value: BaseException | None, traceback: TracebackType | None) -> bool:
-        if exc_type is not None:
+        if exc_type is not None and self.let:
             tb_str = ''.join(format_exception(exc_type, exc_value, traceback))
-            self.logger.log(self.level, f"{self.message}\n{tb_str}")
+
+            log(
+                f"{self.message}\n{tb_str}" if self.error else self.message,
+                self.level,
+                self.logger
+            )
 
             return True
 
         return False
 
-def ecm(message: str, error: type = TypeError, level: int = ERROR, logger: Logger = LOGGER):
-    log(message, level, logger)
+
+def ecm(message: str = '', level: int = WARNING, logger: Logger = LOGGER, let: bool = True, error: bool = False):
+    return ErrorContextManager(message, level, logger, let, error)
+
+def raise_error(message: str = '', error: type = TypeError, logger: Logger = LOGGER):
+    log(message, ERROR, logger)
     raise error(message)
+
+re = raise_error

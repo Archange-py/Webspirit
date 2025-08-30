@@ -2,9 +2,9 @@ from typing import Any, Callable, Iterable, Self, TypeAlias, Union
 
 from ..config.logger import log, INFO, ERROR, WARNING, DEBUG
 
-from .contexterror import ErrorContextManager, ecm
-
 from inspect import BoundArguments, signature
+
+from .contexterror import re as _re
 
 from urllib.parse import urlparse
 
@@ -23,12 +23,27 @@ class _PathOrURL:
 class HyperLink(str, _PathOrURL):
     def __new__(cls, string: str):
         if not cls.is_url(string):
-            ecm(f"'{string}' must be a valid hyperlink")
+            _re(f"'{string}' must be a valid hyperlink")
 
         return super().__new__(cls, string)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self}')"
+
+    def copy(self) -> 'HyperLink':
+        return HyperLink(self)
+
+    @property
+    def id(self):
+        return self[-11:]
+
+    @id.setter
+    def id(self):
+        _re("You can't set id attribute")
+
+    @id.deleter
+    def id(self):
+        _re("You can't delete id attribute")
 
     @staticmethod
     def is_url(url: 'str | HyperLink') -> bool:
@@ -40,12 +55,12 @@ class HyperLink(str, _PathOrURL):
 class StrPath(Path, _PathOrURL):
     def __new__(cls, string: str | Path):
         if not (StrPath.is_path(string) or StrPath.is_path(string, dir=True)):
-            ecm(f"'{string}' must be a valid path to a file or a directory")
+            _re(f"'{string}' must be a valid path to a file or a directory")
 
         return super().__new__(cls, string)
 
     def __str__(self) -> str:
-        return str(self.relpath())
+        return os.path.relpath(super().__str__())
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}('{self.relpath()}')"
@@ -55,6 +70,9 @@ class StrPath(Path, _PathOrURL):
 
     def dirname(self) -> 'StrPath':
         return StrPath(os.path.dirname(self))
+
+    def copy(self) -> 'StrPath':
+        return StrPath(self)
 
     @staticmethod
     def is_path(string: 'str | Path | StrPath', dir: bool = False, suffix: str | Iterable[str] | None = None) -> bool:
@@ -86,7 +104,7 @@ class CheckType:
         self.signature = signature(self.function)
 
         if not self.annotations:
-            ecm("You must annotate the definition of your function")
+            _re("You must annotate the definition of your function")
 
         @wraps(function)
         def wrapper(cls: Self, *args: tuple, **kwargs: dict) -> Any:
@@ -113,7 +131,7 @@ class CheckType:
             bound.arguments[parameter] = self.convert(parameter, bound.arguments[parameter], self.annotations[parameter])
 
         elif type(given) != asked:
-            ecm(f"For the '{parameter}' parameter, it must be of type {asked}, but you have given '{given}' with a type of {type(given)}")
+            _re(f"For the '{parameter}' parameter, it must be of type {asked}, but you have given '{given}' with a type of {type(given)}")
 
     def convert(self, parameter: str, value: object, annotation: type | UnionType) -> object | None:
         flag: bool = False
@@ -132,7 +150,7 @@ class CheckType:
             if flag:
                 return None
 
-            ecm(f"'{parameter}' object with '{value}' value, can't be converted to {annotation}", ValueError)
+            _re(f"'{parameter}' object with '{value}' value, can't be converted to {annotation}", ValueError)
 
 class ValidatePathOrUrl(CheckType):
     def __init__(self, *parameters: tuple, convert: bool = True, exist_ok: bool = False):
@@ -160,4 +178,4 @@ class ValidatePathOrUrl(CheckType):
             log(f"Change '{value}' of type {type(value)} to type {type(returned)}", DEBUG)
             return returned
 
-        ecm(f"'{parameter}' object with '{value}' must be a valid url or a path to a csv or a txt file", ValueError)
+        _re(f"'{parameter}' object with '{value}' must be a valid url or a path to a csv or a txt file", ValueError)

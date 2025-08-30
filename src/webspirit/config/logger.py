@@ -20,7 +20,7 @@ file_const.DIR_LOGS.mkdir(exist_ok=True)
 LOG_LEVEL: int = DEBUG
 BACKUP_COUNT: int = 3 # Up to 3 backup files
 MAX_BYTES: int = 5 * 1024 * 1024 # 5 Mo
-FORMAT_PATTERN: str = "{asctime} {levelname:<8} {filename:<16} {message}"
+FORMAT_PATTERN: str = "{asctime:<20} {filename:<10} {levelname:<8} {message}"
 LOG_COLORS: dict[str, str] = {
     'DEBUG': 'cyan',
     'INFO': 'green',
@@ -61,7 +61,7 @@ def get_logger(name: str) -> Logger:
 
         console_formatter: ColoredFormatter = get_console_formatter()
         console_handler: StreamHandler = StreamHandler()
-        # console_handler.setFormatter(console_formatter)
+        console_handler.setFormatter(console_formatter)
 
         file_formatter: Formatter = get_file_formatter()
         file_handler: RotatingFileHandler = get_file_handler()
@@ -75,7 +75,10 @@ def get_logger(name: str) -> Logger:
 
 LOGGER: Logger = get_logger(__name__)
 
-def log(message: str, level: int = LOG_LEVEL, logger: Logger = LOGGER):
+def log(message: str, level: int = LOG_LEVEL, logger: Logger | None = None):
+    if logger is None:
+        logger = LOGGER
+
     logger.log(
         level=level,
         msg=str(message),
