@@ -14,6 +14,8 @@ from types import UnionType
 
 from pathlib import Path
 
+from re import Match
+
 import re, os
 
 
@@ -34,8 +36,11 @@ class HyperLink(str, _PathOrURL):
         return HyperLink(self)
 
     @property
-    def id(self):
-        return self[-11:]
+    def id(self) -> str:
+        pattern: str = r'(?:https?://(?:www\.)?youtube\.com/watch\?v=|https?://(?:www\.)?youtu\.be/)([a-zA-Z0-9_-]{11})'
+        match: Match = re.search(pattern, self)
+
+        return match.group(1) if match else ''
 
     @id.setter
     def id(self):
@@ -174,7 +179,7 @@ class ValidatePathOrUrl(CheckType):
             returned = StrPath(value)
             log(f"Create {Path(value)}, because doesn't exist", DEBUG)
 
-        if not returned is None:
+        if returned is not None:
             log(f"Change '{value}' of type {type(value)} to type {type(returned)}", DEBUG)
             return returned
 

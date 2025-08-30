@@ -1,6 +1,6 @@
-from ytload.tools.checktype import ValidatePathOrUrl, CheckType, PathOrURL, StrPath, HyperLink
+from webspirit.tools.checktype import ValidatePathOrUrl, CheckType, PathOrURL, StrPath, HyperLink
 
-from ytload.config.constants import PATH_LANGUAGES, PATH_MUSICS_LIST
+from webspirit.config.constants import PATH_LANGUAGES, PATH_MUSICS_LIST
 
 from os.path import abspath
 
@@ -10,6 +10,8 @@ from types import NoneType
 
 import unittest
 
+
+# PATH_LANGUAGES, PATH_MUSICS_LIST = StrPath(PATH_LANGUAGES).relpath(), StrPath(PATH_MUSICS_LIST).relpath()
 
 class TestHyperLink(unittest.TestCase):
     def test_is_url(self):
@@ -33,25 +35,25 @@ class TestStrPath(unittest.TestCase):
         self.assertTrue(StrPath.is_path(str(PATH_LANGUAGES)))
         self.assertTrue(StrPath.is_path(StrPath(PATH_LANGUAGES)))
 
-        self.assertTrue(StrPath.is_path(abspath(r'.\src\ytload\data\musics.csv'), suffix=('csv', 'txt')))
-        self.assertTrue(StrPath.is_path(abspath(r'.\src\ytload\data\musics.csv'), suffix='csv'))
-        self.assertTrue(StrPath.is_path(abspath(r'.\src\ytload\data'), dir=True))
+        self.assertTrue(StrPath.is_path(abspath(r'.\src\webspirit\data\musics.csv'), suffix=('csv', 'txt')))
+        self.assertTrue(StrPath.is_path(abspath(r'.\src\webspirit\data\musics.csv'), suffix='csv'))
+        self.assertTrue(StrPath.is_path(abspath(r'.\src\webspirit\data'), dir=True))
 
     def test_methods(self):
         self.assertTupleEqual(
             (StrPath(PATH_LANGUAGES).absolute(), StrPath(PATH_LANGUAGES).relpath(), StrPath(PATH_LANGUAGES).dirname()),
-            (StrPath(r'C:\Users\Blondel\Documents\Programmation\Langage\Python\Projects\PyForge\plugins\YouTubeDownloader\src\ytload\data\languages.csv'),
-             StrPath(r'.\src\ytload\data\languages.csv'),
-             StrPath(r'C:\Users\Blondel\Documents\Programmation\Langage\Python\Projects\PyForge\plugins\YouTubeDownloader\src\ytload\data'))
+            (StrPath(r'C:\Users\Blondel\Documents\Programmation\Langage\Python\Projects\PyForge\plugins\Webspirit\src\webspirit\data\languages.csv'),
+             StrPath(r'.\src\webspirit\data\languages.csv'),
+             StrPath(r'C:\Users\Blondel\Documents\Programmation\Langage\Python\Projects\PyForge\plugins\Webspirit\src\webspirit\data'))
         )
 
     def test_introspection(self):
         path = StrPath(PATH_LANGUAGES)
 
-        self.assertEqual(repr(path.relpath()), "StrPath('src\ytload\data\languages.csv')")
+        self.assertEqual(repr(path.relpath()), "StrPath('src\webspirit\data\languages.csv')")
 
         with self.assertRaises(TypeError):
-            StrPath(string=abspath(r'.\src\ytload\data\musics.txt'))
+            StrPath(string=abspath(r'.\src\webspirit\data\musics.txt'))
 
 class BookOfLink:
     @CheckType()
@@ -105,7 +107,7 @@ def append2(url: HyperLink) -> HyperLink:
 
 class TestCheckType(unittest.TestCase):
     def test_docstring(self):
-        results = testmod(__import__("ytload.tools.checktype"), verbose=True)
+        results = testmod(__import__("webspirit.tools.checktype"), verbose=True)
 
         self.assertFalse(bool(results.failed))
 
@@ -119,7 +121,7 @@ class TestCheckType(unittest.TestCase):
         self.assertEqual(book.append_path(str(PATH_MUSICS_LIST)), StrPath)
 
         with self.assertRaises(ValueError):
-            book.append_path(abspath(r'.\src\ytload\data\musics.txt'))
+            book.append_path(abspath(r'.\src\webspirit\data\musics.txt'))
 
     def test_function_book_of_link(self):
         self.assertTupleEqual(append_url1('https://youtu.be/1V_xRb0x9aw', 7), (HyperLink, int))
@@ -129,7 +131,7 @@ class TestCheckType(unittest.TestCase):
         self.assertEqual(append_path(str(PATH_MUSICS_LIST)), StrPath)
 
         with self.assertRaises(ValueError):
-            append_path(abspath(r'.\src\ytload\data\musics.txt'))
+            append_path(abspath(r'.\src\webspirit\data\musics.txt'))
 
 class ValidatePathOrUrl(unittest.TestCase):
     def test_class_book_of_link(self):

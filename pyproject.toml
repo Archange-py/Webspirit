@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Archange-py/Webspirit"
+Homepage = "https://github.com/Archange-py/Webspirit/blob/main/README.md"
 Repository = "https://github.com/Archange-py/Webspirit"
 Library = "https://pypi.org/project/webspirit/"
 
