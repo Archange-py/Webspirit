@@ -35,9 +35,9 @@ class TestStrPath(unittest.TestCase):
         self.assertTrue(StrPath.is_path(str(PATH_LANGUAGES)))
         self.assertTrue(StrPath.is_path(StrPath(PATH_LANGUAGES)))
 
-        self.assertTrue(StrPath.is_path(abspath(r'.\src\webspirit\data\musics.csv'), suffix=('csv', 'txt')))
-        self.assertTrue(StrPath.is_path(abspath(r'.\src\webspirit\data\musics.csv'), suffix='csv'))
-        self.assertTrue(StrPath.is_path(abspath(r'.\src\webspirit\data'), dir=True))
+        self.assertTrue(StrPath.is_path(abspath(r'./src/webspirit/data/musics.csv'), suffix=('csv', 'txt')))
+        self.assertTrue(StrPath.is_path(abspath(r'./src/webspirit/data/musics.csv'), suffix='csv'))
+        self.assertTrue(StrPath.is_path(abspath(r'./src/webspirit/data'), dir=True))
 
     def test_methods(self):
         self.assertTupleEqual(
@@ -53,7 +53,7 @@ class TestStrPath(unittest.TestCase):
         self.assertEqual(repr(path.relpath()), "StrPath('src\webspirit\data\languages.csv')")
 
         with self.assertRaises(TypeError):
-            StrPath(string=abspath(r'.\src\webspirit\data\musics.txt'))
+            StrPath(string=abspath(r'./src/webspirit/data/musics.txt'))
 
 class BookOfLink:
     @CheckType()
@@ -121,7 +121,7 @@ class TestCheckType(unittest.TestCase):
         self.assertEqual(book.append_path(str(PATH_MUSICS_LIST)), StrPath)
 
         with self.assertRaises(ValueError):
-            book.append_path(abspath(r'.\src\webspirit\data\musics.txt'))
+            book.append_path(abspath(r'./src/webspirit/data/musics.txt'))
 
     def test_function_book_of_link(self):
         self.assertTupleEqual(append_url1('https://youtu.be/1V_xRb0x9aw', 7), (HyperLink, int))
@@ -131,7 +131,7 @@ class TestCheckType(unittest.TestCase):
         self.assertEqual(append_path(str(PATH_MUSICS_LIST)), StrPath)
 
         with self.assertRaises(ValueError):
-            append_path(abspath(r'.\src\webspirit\data\musics.txt'))
+            append_path(abspath(r'./src/webspirit/data/musics.txt'))
 
 class ValidatePathOrUrl(unittest.TestCase):
     def test_class_book_of_link(self):
