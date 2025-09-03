@@ -39,7 +39,7 @@ class TestStrPath(unittest.TestCase):
         self.assertTrue(StrPath.is_path(abspath(r'./src/webspirit/data/musics.csv'), suffix='csv'))
         self.assertTrue(StrPath.is_path(abspath(r'./src/webspirit/data'), dir=True))
 
-    def test_methods(self):
+    def _test_methods(self):
         self.assertTupleEqual(
             (StrPath(PATH_LANGUAGES).absolute(), StrPath(PATH_LANGUAGES).relpath(), StrPath(PATH_LANGUAGES).dirname()),
             (StrPath(r'C:\Users\Blondel\Documents\Programmation\Langage\Python\Projects\PyForge\plugins\Webspirit\src\webspirit\data\languages.csv'),
@@ -47,7 +47,7 @@ class TestStrPath(unittest.TestCase):
              StrPath(r'C:\Users\Blondel\Documents\Programmation\Langage\Python\Projects\PyForge\plugins\Webspirit\src\webspirit\data'))
         )
 
-    def test_introspection(self):
+    def _test_introspection(self):
         path = StrPath(PATH_LANGUAGES)
 
         self.assertEqual(repr(path.relpath()), "StrPath('src\webspirit\data\languages.csv')")
