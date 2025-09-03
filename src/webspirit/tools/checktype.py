@@ -2,7 +2,7 @@ from typing import Any, Callable, Iterable, Self, TypeAlias, Union
 
 from ..config.logger import log, INFO, ERROR, WARNING, DEBUG
 
-from inspect import BoundArguments, signature
+from inspect import BoundArguments, Signature, signature
 
 from .contexterror import re as _re
 
@@ -23,8 +23,11 @@ class _PathOrURL:
     pass
 
 class HyperLink(str, _PathOrURL):
-    def __new__(cls, string: str):
-        if not cls.is_url(string):
+    def __new__(cls, string: str, exist: bool = True):
+        if not exist:
+            log(f"Skip existing test for {string}", DEBUG)
+
+        elif not cls.is_url(string):
             _re(f"'{string}' must be a valid hyperlink")
 
         return super().__new__(cls, string)
@@ -58,8 +61,11 @@ class HyperLink(str, _PathOrURL):
         return bool(re.match(pattern, url)) and all([result.scheme, result.netloc])
 
 class StrPath(Path, _PathOrURL):
-    def __new__(cls, string: str | Path):
-        if not (StrPath.is_path(string) or StrPath.is_path(string, dir=True)):
+    def __new__(cls, string: str | Path, exist: bool = True):
+        if not exist:
+            log(f"Skip existing test for {string}", DEBUG)
+
+        elif not (StrPath.is_path(string) or StrPath.is_path(string, dir=True)):
             _re(f"'{string}' must be a valid path to a file or a directory")
 
         return super().__new__(cls, string)
@@ -99,44 +105,104 @@ PathOrURL: TypeAlias = Union[StrPath, HyperLink]
 class CheckType:
     SELF: str = 'self'
 
-    def __init__(self, *parameters: tuple, convert: bool = True):
-        self.parameters = parameters
+    def __init__(self, *parameters: tuple, convert: bool = True, return_: bool = False):
+        if len(parameters) == 1 and not isinstance(parameters[0], str):
+            self.without_parentheses: bool = True
+            self.function: Callable[..., Any] = parameters[0]
+
+        else:
+            self.without_parentheses: bool = False
+            self.name_parameters = parameters
+
+        self._return = return_
         self._convert = convert
 
-    def __call__(self, function: Callable[..., Any]) -> Callable[..., Any]:
-        self.function = function
-        self.annotations = self.function.__annotations__
-        self.signature = signature(self.function)
+    def __call_with_parenthesis__(self) -> Callable[..., Any]:
+        @wraps(self.function)
+        def wrapper(cls: Self | Any, *args: tuple, **kwargs: dict) -> Any:
+            self.signature: BoundArguments = signature(self.function).bind(cls, *args, **kwargs)
+            self.signature.apply_defaults()
 
-        if not self.annotations:
-            _re("You must annotate the definition of your function")
+            self.arguments: dict[str, object] = dict(self.signature.arguments)
+            self.arguments.pop(CheckType.SELF, None)
 
-        @wraps(function)
-        def wrapper(cls: Self, *args: tuple, **kwargs: dict) -> Any:
-            bound = self.signature.bind(cls, *args, **kwargs)
-            bound.apply_defaults()
-            arguments = {param:obj for param, obj in bound.arguments.items() if param != CheckType.SELF}
+            empty_call: bool = not bool(self.name_parameters)
 
-            if not bool(self.parameters):
-                for (parameter, asked), given in zip(self.annotations.items(), arguments.values()):
-                    self.validate_and_convert_type(given, asked, parameter, bound)
+            if any(
+                parameter not in self.annotations_no_return for parameter in self.arguments
+            ) and empty_call:
+                _re(f"You must annotate parameters of {self.function.__name__}({': <type>, '.join(self.arguments.keys())}: <type>)")
+
+            if any(
+                parameter not in self.annotations_no_return for parameter in self.name_parameters
+            ) and not empty_call:
+                _re(f"You must annotate '{', '.join(self.name_parameters)}' {'parameter(s)' if len(self.name_parameters) > 1 else 'parameter'} of {self.function.__name__}({': <type>, '.join(self.name_parameters)}: <type>)")
+
+            if empty_call:
+                for parameter in self.annotations_no_return:
+                    self.validate_and_convert_type(parameter)
 
             else:
-                for parameter in self.parameters:
-                    if parameter in arguments:
-                        asked, given = self.annotations[parameter], arguments[parameter]
-                        self.validate_and_convert_type(given, asked, parameter, bound)
+                for parameter in self.name_parameters:
+                    self.validate_and_convert_type(parameter)
 
-            return self.function(*bound.args, **bound.kwargs)
+            _return: Any = self.function(*self.signature.args, **self.signature.kwargs)
+            return self.convert('return', _return, self.annotations['return']) if self._return else _return
 
         return wrapper
 
-    def validate_and_convert_type(self, given: object, asked: type, parameter: str, bound: BoundArguments):
+    def __call_without_parenthesis__(self, *args: tuple, **kwargs: dict) -> Any:
+        self.signature: Signature = signature(self.function)
+
+        if str(self.signature).startswith(f'({CheckType.SELF}'):
+            self.signature: BoundArguments = self.signature.bind(None, *args, **kwargs)
+
+        else:
+            self.signature: BoundArguments = self.signature.bind(*args, **kwargs)
+
+        self.signature.apply_defaults()
+
+        self.arguments: dict[str, object] = dict(self.signature.arguments)
+        self.arguments.pop(CheckType.SELF, None)
+
+        if any(
+            parameter not in self.annotations_no_return for parameter in self.arguments
+        ):
+            _re(f"You must annotate parameters of {self.function.__name__}({': <type>, '.join(self.arguments.keys())}: <type>)")
+
+        for parameter in self.annotations_no_return:
+            self.validate_and_convert_type(parameter)
+
+        _return: Any = self.function(*self.signature.args, **self.signature.kwargs)
+
+        return self.convert('return', _return, self.annotations['return']) if self._return else _return
+
+    def __call__(self, *args: tuple, **kwargs: dict) -> Callable[..., Any] | Any:
+        if not self.without_parentheses:
+            self.function: Callable[..., Any] = args[0]
+
+        self.annotations: dict[str, Any] = self.function.__annotations__
+        self.annotations_no_return: dict[str, Any] = self.annotations.copy()
+        self.annotations_no_return.pop('return', None)
+
+        if self._return and self.annotations.get('return') is None:
+            _re(f"You must annotate the return of {self.function.__name__}(...) -> <type>")
+
+        if self.without_parentheses:
+            return self.__call_without_parenthesis__(*args, **kwargs)
+
+        else:
+            return self.__call_with_parenthesis__()
+
+    def validate_and_convert_type(self, parameter: str):
+        given: object = self.arguments[parameter]
+        asked: type = self.annotations[parameter]
+
         if type(given) != asked and self._convert:
-            bound.arguments[parameter] = self.convert(parameter, bound.arguments[parameter], self.annotations[parameter])
+            self.signature.arguments[parameter] = self.convert(parameter, given, asked)
 
         elif type(given) != asked:
-            _re(f"For the '{parameter}' parameter, it must be of type {asked}, but you have given '{given}' with a type of {type(given)}")
+            _re(f"The parameter {parameter} of {self.function.__name__} with a '{given}' value must be of type {asked} but you have given '{given}' with a type {type(given)}")
 
     def convert(self, parameter: str, value: object, annotation: type | UnionType) -> object | None:
         flag: bool = False
@@ -146,8 +212,12 @@ class CheckType:
             flag = True
 
         try:
-            converted = annotation(value)
-            log(f"Change '{value}' of type {type(value)} to type {annotation}", DEBUG)
+            if type(value) is annotation:
+                log(f"Skip converting for the parameter {parameter} of {self.function.__name__} with a '{value}' value and a type {type(value)} because is already of type {annotation}", DEBUG)
+
+            else:
+                converted = annotation(value)
+                log(f"Change the parameter {parameter} of {self.function.__name__} with a '{value}' value and a type {type(value)} to type {annotation}", DEBUG)
 
             return converted
 
@@ -155,18 +225,18 @@ class CheckType:
             if flag:
                 return None
 
-            _re(f"'{parameter}' object with '{value}' value, can't be converted to {annotation}", ValueError)
+            _re(f"The parameter {parameter} of {self.function.__name__} with a '{value}' value can't be converted to {annotation}", ValueError, exception)
 
 class ValidatePathOrUrl(CheckType):
-    def __init__(self, *parameters: tuple, convert: bool = True, exist_ok: bool = False):
-        self.exist_ok = exist_ok
+    def __init__(self, *parameters: tuple, convert: bool = True, exist: bool = False):
+        self.exist = exist
         super().__init__(*parameters, convert=convert)
 
     def convert(self, parameter: str, value: str | Path | PathOrURL | None, annotation: type[PathOrURL]) -> PathOrURL:
         if isinstance(value, annotation) or value is None:
             return value
 
-        returned: PathOrURL | None = None # type: ignore
+        returned: PathOrURL | None = None
 
         if HyperLink.is_url(str(value)) and issubclass(HyperLink, annotation):
             returned = HyperLink(value)
@@ -174,7 +244,7 @@ class ValidatePathOrUrl(CheckType):
         if StrPath.is_path(value, dir=False, suffix=['csv', 'txt']) and issubclass(StrPath, annotation):
             returned = StrPath(value)
 
-        if self.exist_ok and issubclass(StrPath, annotation):
+        if self.exist and issubclass(StrPath, annotation):
             with Path(value).open('w', encoding='utf-8'): pass
             returned = StrPath(value)
             log(f"Create {Path(value)}, because doesn't exist", DEBUG)

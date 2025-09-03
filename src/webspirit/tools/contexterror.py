@@ -36,11 +36,12 @@ class ErrorContextManager:
         if exc_type is not None and self.let:
             tb_str = ''.join(format_exception(exc_type, exc_value, traceback))
 
-            log(
-                f"{self.message}\n{tb_str}" if self.error else self.message,
-                self.level,
-                self.logger
-            )
+            if self.message:
+                log(
+                    f"{self.message}\n{tb_str}" if self.error else self.message,
+                    self.level,
+                    self.logger
+                )
 
             return True
 
@@ -50,8 +51,14 @@ class ErrorContextManager:
 def ecm(message: str = '', level: int = WARNING, logger: Logger = LOGGER, let: bool = True, error: bool = False):
     return ErrorContextManager(message, level, logger, let, error)
 
-def raise_error(message: str = '', error: type = TypeError, logger: Logger = LOGGER):
+def raise_error(message: str = '', error: type = TypeError, cause: Exception = None, logger: Logger = LOGGER):
     log(message, ERROR, logger)
-    raise error(message)
+
+    if cause is None:
+        raise error(message)
+
+    else:
+        raise error(message) from cause
+
 
 re = raise_error

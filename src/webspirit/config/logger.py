@@ -14,11 +14,14 @@ from logging.handlers import RotatingFileHandler
 
 from colorlog import ColoredFormatter
 
+from rich.console import Console
+
 from typing import Any
 
 
 file_const.DIR_LOGS.mkdir(exist_ok=True)
 
+CONSOLE = Console()
 LOG_LEVEL: int = DEBUG
 BACKUP_COUNT: int = 3 # Up to 3 backup files
 MAX_BYTES: int = 5 * 1024 * 1024 # 5 Mo
@@ -44,8 +47,7 @@ def get_console_formatter() -> ColoredFormatter:
     return ColoredFormatter(
         fmt=FORMAT_PATTERN_COLORS,
         datefmt="%Y-%m-%d %H:%M:%S",
-        log_colors=LOG_COLORS,
-        style="{"
+        style="{",
     )
 
 def get_file_handler() -> RotatingFileHandler:
@@ -72,6 +74,8 @@ def get_logger(name: str) -> Logger:
 
         logger.addHandler(console_handler)
         logger.addHandler(file_handler)
+
+        logger.propagate = False
 
     return logger
 
