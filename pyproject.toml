@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "webspirit"
-version = "0.0.1"
+version = "0.0.2"
 description = "A Python package for downloading resources from the web and organizing your favorites"
 keywords = ["webspirit", "yt-dlp", "POO", "YouTube", "download", "favorites", "collections", "web-scrapping"]
 readme = "README.md"
