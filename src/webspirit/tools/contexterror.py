@@ -9,6 +9,12 @@ from types import TracebackType
 from functools import wraps
 
 
+__all__: list[str] = [
+    'ErrorContextManager', 'ecm',
+    'raise_error', 're'
+]
+
+
 P = ParamSpec("P")
 R = TypeVar("R")
 
@@ -47,9 +53,8 @@ class ErrorContextManager:
 
         return False
 
+ecm = ErrorContextManager
 
-def ecm(message: str = '', level: int = WARNING, logger: Logger = LOGGER, let: bool = True, error: bool = False):
-    return ErrorContextManager(message, level, logger, let, error)
 
 def raise_error(message: str = '', error: type = TypeError, cause: Exception = None, logger: Logger = LOGGER):
     log(message, ERROR, logger)

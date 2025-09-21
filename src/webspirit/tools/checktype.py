@@ -19,6 +19,14 @@ from re import Match
 import re, os
 
 
+__all__: list[str] = [
+    'HyperLink',
+    'StrPath',
+    'CheckType',
+    'ValidatePathOrUrl'
+]
+
+
 class _PathOrURL:
     pass
 
@@ -63,12 +71,15 @@ class HyperLink(str, _PathOrURL):
 class StrPath(Path, _PathOrURL):
     def __new__(cls, string: str | Path, exist: bool = True):
         if not exist:
-            log(f"Skip existing test for {string}", DEBUG)
+            log(f"Skip existing test for '{string}'", DEBUG)
 
         elif not (StrPath.is_path(string) or StrPath.is_path(string, dir=True)):
             _re(f"'{string}' must be a valid path to a file or a directory")
 
-        return super().__new__(cls, string)
+        strpath = super().__new__(cls, string)
+        strpath.exists = exist
+
+        return strpath
 
     def __str__(self) -> str:
         return os.path.relpath(super().__str__())
@@ -77,13 +88,13 @@ class StrPath(Path, _PathOrURL):
         return f"{self.__class__.__name__}('{self.relpath()}')"
 
     def relpath(self) -> 'StrPath':
-        return StrPath(os.path.relpath(self))
+        return StrPath(os.path.relpath(self), exist=self.exists)
 
     def dirname(self) -> 'StrPath':
-        return StrPath(os.path.dirname(self))
+        return StrPath(os.path.dirname(self), exist=self.exists)
 
     def copy(self) -> 'StrPath':
-        return StrPath(self)
+        return StrPath(self, exist=self.exists)
 
     @staticmethod
     def is_path(string: 'str | Path | StrPath', dir: bool = False, suffix: str | Iterable[str] | None = None) -> bool:
@@ -120,13 +131,17 @@ class CheckType:
     def __call_with_parenthesis__(self) -> Callable[..., Any]:
         @wraps(self.function)
         def wrapper(cls: Self | Any, *args: tuple, **kwargs: dict) -> Any:
-            self.signature: BoundArguments = signature(self.function).bind(cls, *args, **kwargs)
+            self.signature: BoundArguments = signature(self.function).bind(cls, *args, **kwargs) # type: ignore
             self.signature.apply_defaults()
 
-            self.arguments: dict[str, object] = dict(self.signature.arguments)
+            self.arguments: dict[str, object] = dict(self.signature.arguments) # type: ignore
             self.arguments.pop(CheckType.SELF, None)
 
             empty_call: bool = not bool(self.name_parameters)
+
+            for parameter in self.name_parameters:
+                if parameter not in self.arguments.keys():
+                    _re(f"'{parameter}' parameter isn't defined in the {self.function.__name__}({', '.join(self.arguments.keys())})")
 
             if any(
                 parameter not in self.annotations_no_return for parameter in self.arguments
@@ -198,11 +213,12 @@ class CheckType:
         given: object = self.arguments[parameter]
         asked: type = self.annotations[parameter]
 
-        if type(given) != asked and self._convert:
-            self.signature.arguments[parameter] = self.convert(parameter, given, asked)
+        if type(given) != asked:
+            if self._convert:
+                self.signature.arguments[parameter] = self.convert(parameter, given, asked)
 
-        elif type(given) != asked:
-            _re(f"The parameter {parameter} of {self.function.__name__} with a '{given}' value must be of type {asked} but you have given '{given}' with a type {type(given)}")
+            else:
+                _re(f"The parameter {parameter} of {self.function.__name__} with a '{given}' value must be of type {asked} but you have given '{given}' with a type {type(given)}")
 
     def convert(self, parameter: str, value: object, annotation: type | UnionType) -> object | None:
         flag: bool = False
