@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "webspirit"
-version = "0.0.1"
+version = "0.0.2"
 description = "A Python package for downloading resources from the web and organizing your favorites"
 keywords = ["webspirit", "yt-dlp", "POO", "YouTube", "download", "favorites", "collections", "web-scrapping"]
 readme = "README.md"
@@ -22,15 +22,17 @@ classifiers = [
 ]
 
 dependencies = [
-    "rich==14.0.0",
-    "pandas==2.3.0",
-    "textual==3.5.0",
-    "colorlog==6.9.0",
-    "yt-dlp==2025.6.9"
+  "pandas==2.3.0",
+  "colorlog==6.9.0",
+  "yt-dlp==2025.6.9",
+  "ipywidgets==8.1.7",
+  "rich==14.0.0",
+  "textual==3.5.0",
+  "beautifulsoup4==4.13.5"
 ]
 
 [project.urls]
-Homepage = "https://github.com/Archange-py/Webspirit"
+Homepage = "https://github.com/Archange-py/Webspirit/blob/main/README.md"
 Repository = "https://github.com/Archange-py/Webspirit"
 Library = "https://pypi.org/project/webspirit/"
 

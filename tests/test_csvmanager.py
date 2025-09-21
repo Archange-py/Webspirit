@@ -1,6 +1,6 @@
-from ytload.tools.csvmanager import CSVManager, Music
+from webspirit.tools.csvmanager import CSVManager, Music
 
-from ytload.tools.checktype import HyperLink
+from webspirit.tools.checktype import HyperLink
 
 from doctest import testmod
 
@@ -20,7 +20,7 @@ class TestMusic(unittest.TestCase):
 
 class TestCSVManager(unittest.TestCase):
     def test_docstring(self):
-        results = testmod(__import__("ytload.tools.csvmanager"), verbose=True)
+        results = testmod(__import__("webspirit.tools.csvmanager"), verbose=True)
 
         self.assertFalse(bool(results.failed))
 

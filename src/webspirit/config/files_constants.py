@@ -2,6 +2,7 @@
 Constants of directory, names and absolute path to manipulate files.
 """
 
+
 from os.path import dirname
 
 from pathlib import Path
@@ -33,3 +34,8 @@ PATH_SETTINGS: Path = DIR_DATA / 'settings.json'
 PATH_FORMATS: Path = DIR_DATA / 'formats.json'
 
 FFMPEG_LOCATION: str = r"C:\Users\Blondel\Documents\Programmation\Python\Projects\Webspirit\src\data\FFmpeg\bin\ffmpeg.exe"#str(Path(r'.\src\data\FFmpeg\bin\ffmpeg.exe'))
+
+
+__all__: list[str] = [
+    var for var in globals() if var.isupper()
+]

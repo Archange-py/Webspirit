@@ -61,7 +61,7 @@ class Music:
 class CSVManager:
     HEADERS: list[str] = ['YouTubeUrl', 'Path', 'Extension', 'Type', 'SpotifyUrl', 'Picture', 'Meta']
 
-    @ValidatePathOrUrl('path', exist_ok=True)
+    @ValidatePathOrUrl('path', exist=True)
     def __init__(self, path: StrPath = PATH_TMP_MUSICS, headers: list[str] = HEADERS):
         self.path = path
         self.headers = headers

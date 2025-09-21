@@ -7,7 +7,7 @@ import unittest
 class TestJSONManager(unittest.TestCase):
     # Docstring test
     def test_docstring(self):
-        results = testmod(__import__("ytload.tools.jsonmanager"), verbose=True)
+        results = testmod(__import__("webspirit.tools.jsonmanager"), verbose=True)
 
         self.assertFalse(bool(results.failed))
 
