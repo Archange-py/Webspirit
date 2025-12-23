@@ -28,10 +28,6 @@ extensions = [
     "myst_parser",
 ]
 
-myst_enable_extensions = [
-    "eval_rst",
-]
-
 autosummary_generate = True
 autoclass_content = "both"
 
@@ -55,23 +51,3 @@ html_theme_options = {
 }
 html_static_path = ["_static"]
 # html_logo = "_static/logo-128.png"
-
-from docutils import nodes
-from docutils.parsers.rst import Directive
-import subprocess
-
-class PyExec(Directive):
-    has_content = True
-
-    def run(self):
-        code = "\n".join(self.content)
-        result = subprocess.run(
-            ["python"],
-            input=code,
-            text=True,
-            capture_output=True
-        )
-        return [nodes.literal_block(result.stdout, result.stdout)]
-
-def setup(app):
-    app.add_directive("pyexec", PyExec)
