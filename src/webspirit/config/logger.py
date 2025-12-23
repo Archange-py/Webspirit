@@ -18,6 +18,8 @@ from colorlog import ColoredFormatter
 
 from rich.console import Console
 
+from functools import partial
+
 from typing import Any
 
 
@@ -65,6 +67,7 @@ def get_console_formatter() -> NotebookFormatter:
     return NotebookFormatter(
         fmt=FORMAT_PATTERN_COLORS,
         datefmt="%Y-%m-%d %H:%M:%S",
+        log_colors=LOG_COLORS,
         style="{",
     )
 
@@ -110,6 +113,14 @@ def log(message: Any, level: int = LOG_LEVEL, logger: Logger | None = None):
         stacklevel=STACK_LEVEL
     )
 
+
+debug = partial(log, level=DEBUG)
+info = partial(log, level=INFO)
+warning = partial(log, level=WARNING)
+error = partial(log, level=ERROR)
+critical = partial(log, level=CRITICAL)
+
+
 __all__: list[str] = [
     var for var in globals() if var.isupper()
 ] + [
@@ -117,5 +128,10 @@ __all__: list[str] = [
     'get_console_formatter',
     'get_file_handler',
     'get_logger',
-    'log'
+    'log',
+    'debug',
+    'info',
+    'warning',
+    'error',
+    'critical'
 ]

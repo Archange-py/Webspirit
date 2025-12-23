@@ -1,0 +1,52 @@
+{
+  "refuges": [
+    {
+      "accessible_hiver": false,
+      "altitude": 2151,
+      "altitude_m": 1693,
+      "capacite": 75,
+      "coordonnees": {
+        "latitude": 42.8025,
+        "longitude": -0.1417
+      },
+      "nom": "Refuge des Oulettes de Gaube",
+      "services": [
+        "dortoir",
+        "repas",
+        "eau potable"
+      ]
+    },
+    {
+      "accessible_hiver": true,
+      "altitude": 2651,
+      "capacite": 30,
+      "coordonnees": {
+        "latitude": 42.7892,
+        "longitude": -0.1411
+      },
+      "nom": "Refuge de Bayssellance",
+      "services": [
+        "dortoir",
+        "repas",
+        "eau potable",
+        "guide"
+      ]
+    },
+    {
+      "accessible_hiver": false,
+      "altitude": 2571,
+      "capacite": 50,
+      "coordonnees": {
+        "latitude": 42.7167,
+        "longitude": 0.5711
+      },
+      "nom": "Refuge du Portillon",
+      "services": [
+        "dortoir",
+        "repas",
+        "eau potable",
+        "wifi"
+      ]
+    }
+  ]
+}

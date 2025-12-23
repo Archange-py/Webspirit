@@ -3,10 +3,24 @@ __pycache__/
 *.egg-info/
 
 .venv/
-.vscode/
 
 dist/
 build/
 dev/
 
+Tests_Files/
+resources/
+
+
 *.log
+
+# Sphinx build output
+docs/_build/
+docs/build/
+
+# Sphinx cache
+docs/.doctrees/
+
+# OS / IDE
+.DS_Store
+.vscode/
