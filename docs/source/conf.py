@@ -6,13 +6,13 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-from importlib.metadata import version as pkg_version
+from importlib.metadata import version
 
 project = 'Webspirit'
 copyright = '2025, Archange'
 author = 'Archange'
 
-release = pkg_version("webspirit")
+release = version("webspirit")
 version = ".".join(release.split(".")[:2])
 
 # -- General configuration ---------------------------------------------------
@@ -34,7 +34,7 @@ autoclass_content = "both"
 templates_path = ['_templates']
 exclude_patterns = []
 
-language = 'en, fr'
+language = 'en'
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -42,7 +42,7 @@ language = 'en, fr'
 html_theme = "pydata_sphinx_theme"
 html_theme_options = {
     "logo": { "text": "webspirit" },
-    "github_url": "https://github.com/TON/REPO",
+    "github_url": "https://github.com/Archange-py/Webspirit",
     "navbar_end": ["search-field.html", "version-switcher"],
     "icon_links": [
         {"name": "PyPI", "url": "https://pypi.org/project/webspirit/", "icon": "fas fa-box"}

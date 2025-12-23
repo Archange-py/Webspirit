@@ -39,7 +39,7 @@ def links_from_cell(notebook: StrPath, index: int = 0, type: type = HyperLink) -
         type(link.removesuffix('\n').removesuffix('  ')) for link in cell['source']
     ]   if cell['cell_type'] in ('markdown', 'raw') else ['']
 
-@CheckType
+@CheckType('root', 'ignore', 'indent', 'branch', 'close', 'empty')
 def tree_directory(
         root: StrPath = DIR_WEBSPIRIT,
         ignore: StrPath = PATH_GITIGNORE,
