@@ -1,4 +1,5 @@
-from webspirit.tools.checktype import ValidatePathOrUrl, CheckType, PathOrURL, StrPath, HyperLink
+from webspirit.classes.tools.checktype import ValidatePathOrUrl, CheckType
+from webspirit.classes.webfiles import PathOrURL, StrPath, HyperLink
 
 from webspirit.config.constants import PATH_LANGUAGES, PATH_MUSICS_LIST
 
