@@ -1,7 +1,9 @@
 name: Build and deploy docs
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - test
 jobs:
   build:
     runs-on: ubuntu-latest
