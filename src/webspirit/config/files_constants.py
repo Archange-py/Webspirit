@@ -3,12 +3,16 @@ Constants of directory, names and absolute path to manipulate files.
 """
 
 
-from os.path import dirname
+from os.path import expanduser, dirname
 
 from pathlib import Path
 
 
-ROOT_DIR: Path = Path(dirname(dirname(__file__)))
+HOME_DIR: Path = Path(expanduser('~'))
+ROOT_DIR: Path = Path(dirname(dirname(dirname(dirname(__file__)))))
+
+DIR_SRC: Path = ROOT_DIR / 'src'
+DIR_WEBSPIRIT: Path = DIR_SRC / 'webspirit'
 
 DIR_TMP: Path = ROOT_DIR / 'tmp'
 DIR_LOGS: Path = ROOT_DIR / 'logs'
@@ -32,6 +36,8 @@ PATH_TMP_MUSICS: Path = DIR_TMP / 'tmp_musics.csv'
 
 PATH_SETTINGS: Path = DIR_DATA / 'settings.json'
 PATH_FORMATS: Path = DIR_DATA / 'formats.json'
+
+PATH_GITIGNORE: Path = ROOT_DIR / '.gitignore'
 
 FFMPEG_LOCATION: str = r"C:\Users\Blondel\Documents\Programmation\Python\Projects\Webspirit\src\data\FFmpeg\bin\ffmpeg.exe"#str(Path(r'.\src\data\FFmpeg\bin\ffmpeg.exe'))
 

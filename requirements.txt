@@ -5,3 +5,10 @@ ipywidgets==8.1.7
 rich==14.0.0
 textual==3.5.0
 beautifulsoup4==4.13.5
+
+sphinx==8.2.3
+sphinx-autobuild==2025.8.25
+sphinx-rtd-theme==3.0.2
+sphinx-autodoc-typehints==3.5.2
+pydata-sphinx-theme==0.16.1
+myst-parser==4.0.1

@@ -1,11 +1,14 @@
-from .checktype import ValidatePathOrUrl, StrPath, HyperLink
+from webspirit.config.logger import DEBUG, INFO, debug, info, error, warning, critical
 
-from ..config.logger import log, INFO, ERROR, WARNING, DEBUG
-from ..config.constants import DIR_TMP, PATH_TMP_MUSICS
+from webspirit.config.constants import DIR_TMP, PATH_TMP_MUSICS
+
+from webspirit.classes.tools.checktype import ValidatePathOrUrl
+
+from webspirit.classes.webfiles import StrPath, HyperLink
 
 from pandas.errors import EmptyDataError
 
-from .contexterror import ecm
+from .contexterror import re
 
 from pandas import DataFrame
 
@@ -19,6 +22,11 @@ from os import remove
 
 import pandas as pd
 
+
+__all__: list[str] = [
+    'Music',
+    'CSVManager',
+]
 
 class Music:
     @ValidatePathOrUrl()
@@ -96,11 +104,11 @@ class CSVManager:
 
     @length.setter
     def length(self, _):
-        ecm(f"You can't set a new length of a {self.__class__.__class__} instance")
+        re(f"You can't set a new length of a {self.__class__.__class__} instance")
 
     @length.deleter
     def length(self, _):
-        ecm(f"You can't delete a length of a {self.__class__.__class__} instance")
+        re(f"You can't delete a length of a {self.__class__.__class__} instance")
 
     @property
     def width(self) -> int:
@@ -108,11 +116,11 @@ class CSVManager:
 
     @width.setter
     def width(self, _):
-        ecm(f"You can't set a new width of a {self.__class__.__class__} instance")
+        re(f"You can't set a new width of a {self.__class__.__class__} instance")
 
     @width.deleter
     def width(self, _):
-        ecm(f"You can't delete a width of a {self.__class__.__class__} instance")
+        re(f"You can't delete a width of a {self.__class__.__class__} instance")
 
     @property
     def size(self) -> int:
@@ -120,11 +128,11 @@ class CSVManager:
 
     @size.setter
     def size(self, _):
-        ecm(f"You can't set the size attribute")
+        re(f"You can't set the size attribute")
 
     @size.deleter
     def size(self, _):
-        ecm(f"You can't delete the size attribute")
+        re(f"You can't delete the size attribute")
 
     @ValidatePathOrUrl('resource')
     def append(self, resource: StrPath): # TODO  | Iterable[PathOrURL] <--- Parcourir la liste et associer chacun à son type
