@@ -24,6 +24,7 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
+    "sphinx_multiversion",
     "sphinx_autodoc_typehints",
     "myst_parser",
 ]
@@ -35,6 +36,12 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 language = 'en'
+
+# Configure the versions to include
+smv_tag_whitelist = r'^v\d+\.\d+$' # Include tags like v1.0, v2.0, etc
+smv_branch_whitelist = r'^main$' # Include the main branch
+smv_remote_whitelist = r'^origin$' # Include the origin remote
+smv_released_pattern = r'^refs/tags/v\d+\.\d+$' # Pattern for released versions
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
