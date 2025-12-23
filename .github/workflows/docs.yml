@@ -1,24 +1,30 @@
 name: Build and deploy docs
-on:
-  push:
-    branches:
-      - main
-      - test
+
+on: [push, pull_request]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - names: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.13.2'
-      - name: Install deps
-        run: pip install -r docs/requirements.txt
+          python-version: "3.13.2"
+
+      - name: Install dependencies
+        run: /
+          pip install --upgrade pip
+          pip install -r docs/requirements.txt
+
       - name: Build docs
         run: |
           cd docs
           make html
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
