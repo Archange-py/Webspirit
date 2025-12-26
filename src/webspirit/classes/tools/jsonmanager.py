@@ -1,8 +1,8 @@
 from webspirit.config.logger import DEBUG, INFO, debug, info, error, warning, critical
 
-from .checktype import CheckType
-
 from .contexterror import ecm, re
+
+from .checktype import CheckType
 
 from ..webfiles import StrPath
 

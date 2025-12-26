@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmarks</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔖 Bookmarks locaux</h1>
+        <button onclick="openBrowser()">🌍 Ouvrir dans le navigateur</button>
+        <div class="form">
+            <input id="title" placeholder="Titre">
+            <input id="url" placeholder="URL">
+            <input id="tags" placeholder="Tags">
+            <button onclick="addBookmark()">Ajouter</button>
+        </div>
+        <div id="list"></div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

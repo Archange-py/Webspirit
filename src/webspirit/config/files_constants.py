@@ -1,7 +1,7 @@
 """
-Constants of directory, names and absolute path to manipulate files.
+Les différentes constantes pour manipuler aisément les différents dossiers, sous-dossiers,
+fichiers dans l'arborescence complète du projet.
 """
-
 
 from os.path import expanduser, dirname
 
@@ -14,32 +14,33 @@ ROOT_DIR: Path = Path(dirname(dirname(dirname(dirname(__file__)))))
 DIR_SRC: Path = ROOT_DIR / 'src'
 DIR_WEBSPIRIT: Path = DIR_SRC / 'webspirit'
 
-DIR_TMP: Path = ROOT_DIR / 'tmp'
-DIR_LOGS: Path = ROOT_DIR / 'logs'
-DIR_DATA: Path = ROOT_DIR / 'data'
-DIR_CONFIG: Path = ROOT_DIR / 'config'
-DIR_DOWNLOADS: Path = ROOT_DIR / 'downloads'
+DIR_EXAMPLES: Path = DIR_WEBSPIRIT / 'examples'
+DIR_EXAMPLES_DATA: Path = DIR_EXAMPLES / 'data'
+DIR_EXAMPLES_GENERATED: Path = DIR_EXAMPLES / 'generated'
+DIR_EXAMPLES_NOTEBOOKS: Path = DIR_EXAMPLES / 'notebooks'
 
-DIR_MUSIC: Path = DIR_DOWNLOADS / 'music'
-DIR_PICTURE: Path = DIR_DOWNLOADS / 'picture'
+DIR_TMP: Path = DIR_WEBSPIRIT / 'tmp'
+DIR_ADDONS: Path = DIR_WEBSPIRIT / 'addons'
+DIR_CONFIG: Path = DIR_WEBSPIRIT / 'config'
+DIR_CLASSES: Path = DIR_WEBSPIRIT / 'classes'
+DIR_RESOURCES: Path = DIR_WEBSPIRIT / 'resources'
+DIR_DOWNLOADS: Path = DIR_WEBSPIRIT / 'downloads'
+DIR_APPLICATION: Path = DIR_WEBSPIRIT / 'application'
 
-LOG_NAME: str = 'stdout.log'
-PATH_LOGS: Path = DIR_LOGS / LOG_NAME
+DIR_CONFIG_DATA: Path = DIR_CONFIG / 'data'
+DIR_CONFIG_DATA_USER: Path = DIR_CONFIG_DATA / 'user'
 
-LANGUAGES_NAME: str = "languages.csv"
-PATH_LANGUAGES: Path = DIR_DATA / LANGUAGES_NAME
+DIR_CLASSES_TOOLS: Path = DIR_CLASSES / 'tools'
 
-MUSICS_LIST_NAME: str = 'musics.csv'
-PATH_MUSICS_LIST: Path = DIR_DATA / MUSICS_LIST_NAME
+PATH_LANGUAGES: Path = DIR_CONFIG_DATA / 'languages.csv'
 
+PATH_MUSICS_LIST: Path = DIR_CONFIG_DATA / 'musics.csv'
 PATH_TMP_MUSICS: Path = DIR_TMP / 'tmp_musics.csv'
 
-PATH_SETTINGS: Path = DIR_DATA / 'settings.json'
-PATH_FORMATS: Path = DIR_DATA / 'formats.json'
+PATH_SETTINGS: Path = DIR_CONFIG_DATA / 'settings.json'
+PATH_FORMATS: Path = DIR_CONFIG_DATA / 'formats.json'
 
 PATH_GITIGNORE: Path = ROOT_DIR / '.gitignore'
-
-FFMPEG_LOCATION: str = r"C:\Users\Blondel\Documents\Programmation\Python\Projects\Webspirit\src\data\FFmpeg\bin\ffmpeg.exe"#str(Path(r'.\src\data\FFmpeg\bin\ffmpeg.exe'))
 
 
 __all__: list[str] = [

@@ -1,3 +1,7 @@
+"""
+Répertoire contenant les différents modules qui gerent les classes et objets utilisé dans cette library.
+"""
+
 from webspirit.config.logger import DEBUG, INFO, debug, info, error, warning, critical
 
 from webspirit.config.constants import DIR_WEBSPIRIT

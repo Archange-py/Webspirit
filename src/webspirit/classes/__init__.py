@@ -1,3 +1,7 @@
+"""
+Répertoire contenant toutes les fonctionnalités principales de webspirit dans différents modules.
+"""
+
 from webspirit.config.logger import DEBUG, INFO, debug, info, error, warning, critical
 
 from webspirit.config.constants import DIR_WEBSPIRIT

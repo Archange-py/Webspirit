@@ -1,0 +1,14 @@
+{
+    "Theme": "default",
+    "MusicPath": "default",
+    "Music": true,
+    "Animation": true,
+
+    "DownloadType": "audio_video",
+    "DownloadFormat": "mp4",
+
+    "FFmpegPath": "default",
+
+    "LogDir": "default",
+    "LogFileName": "webspirit.log"
+}

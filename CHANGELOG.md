@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Correction du chemin d'accès à docs/build/html pour le déploiement sur GitHub Pages avec le Workflow GitHub dans docs.yml 
 - Ajout des ressources manquantes CHANGELOG.md, requirements.txt et du répertoire docs/ dans le fichier MANIFEST.in
+- Correction de la présence de deux dossiers log dans le projet
 
 ### Changed
 
@@ -26,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reconfiguration de l'arbre des dossiers et fichiers
 
 ### Removed
+
+- Mise en cache de l'application FFmpeg
 
 ## [0.0.2] - 2025-09-21
 

@@ -1,0 +1,29 @@
+body {
+  background: #0f172a;
+  color: white;
+  font-family: system-ui;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+}
+.form input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 6px;
+  border: none;
+}
+button {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+.card {
+  background: #020617;
+  padding: 16px;
+  margin-top: 12px;
+  border-radius: 8px;
+}

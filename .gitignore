@@ -1,26 +1,35 @@
+# Python and PyPi generated files
 __pycache__/
+
 *.py[cod]
 *.egg-info/
 
-.venv/
-
 dist/
 build/
-dev/
 
-Tests_Files/
-resources/
-
-
-*.log
-
-# Sphinx build output
-docs/_build/
-docs/build/
-
-# Sphinx cache
-docs/.doctrees/
+# Virtual environment with venv
+.venv/
 
 # OS / IDE
 .DS_Store
 .vscode/
+
+# Private files for tests development
+dev/
+
+# Log generated files
+*.log
+
+# Downloaded files
+tmp/
+
+# Private files
+user/
+
+# FFmpeg
+FFmpeg/
+
+# Sphinx build output and cache
+docs/.doctrees/
+docs/_build/
+docs/build/

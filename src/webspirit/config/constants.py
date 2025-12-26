@@ -1,9 +1,10 @@
 """
-The file that is contains constants and function to manipulate files
+Le fichier qui réuni de manière dynamique toutes le constantes utilisé par la librairie.
 """
 
 
 from . import files_constants as files_const
+from . import dynamic_constants as dyn_const
 from .import logger
 
 from typing import Any
@@ -12,7 +13,7 @@ import contextlib
 
 
 def __getattr__(name: str) -> Any:
-    for module in [files_const, logger]:
+    for module in [files_const, dyn_const, logger]:
         with contextlib.suppress(Exception):
             return getattr(module, name)
 

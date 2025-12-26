@@ -1,0 +1,98 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookmarksApp</title>
+    <!-- Intégration Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-blue-600 text-white p-4">
+        <h1 class="text-2xl font-bold">Mes Bookmarks</h1>
+        <!-- Bouton pour ouvrir l'app desktop (schéma personnalisé) -->
+        <button onclick="window.location.href='myapp://open'"
+            class="mt-2 px-3 py-1 bg-white text-blue-600 rounded">Ouvrir dans
+            l'app desktop</button>
+    </header>
+    <main class="p-4">
+        <!-- Zone de filtre par collections (simplifié) -->
+        <section id="collections" class="mb-4">
+            <!-- Ici on pourrait ajouter des boutons pour filtrer par collection --
+>
+</section>
+<!-- Conteneur des cartes de bookmarks -->
+            <div id="bookmarks" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Les cartes seront injectées ici par JavaScript -->
+            </div>
+    </main>
+    <script>
+        // Fonction pour extraire le domaine d'une URL
+        function getDomain(url) {
+            try {
+                return (new URL(url)).hostname;
+            } catch (e) {
+                return "";
+            }
+        }
+        // Fonction pour charger et afficher les bookmarks
+        async function loadBookmarks() {
+            const response = await fetch('/api/bookmarks');
+            const data = await response.json();
+            const container = document.getElementById('bookmarks');
+            container.innerHTML = '';
+            data.forEach((bm, index) => {
+                // Créer une carte pour chaque bookmark
+                const card = document.createElement('div');
+                card.setAttribute('draggable', 'true');
+                card.className = 'bg-white rounded-lg shadow p-4 transition hover: shadow - lg';
+                // Icône (favicon ou placeholder)
+                const faviconUrl = 'https://www.google.com/s2/favicons?sz=64&domain_url=' + bm.url;
+                const img = document.createElement('img');
+                img.src = faviconUrl;
+                img.alt = 'Favicon';
+                img.className = 'w-8 h-8 inline-block mr-2';
+                card.appendChild(img);
+                // Titre cliquable
+                const link = document.createElement('a');
+                link.href = bm.url;
+                link.target = '_blank';
+                link.textContent = bm.title;
+                link.className = 'text-blue-600 text-lg font-semibold hover:underline';
+                card.appendChild(link);
+                // Collection et tags (si présents)
+                if (bm.collection) {
+                    const col = document.createElement('p');
+                    col.textContent = 'Collection: ' + bm.collection;
+                    col.className = 'text-sm text-gray-500';
+                    card.appendChild(col);
+                }
+                if (bm.tags && bm.tags.length > 0) {
+                    const tags = document.createElement('p');
+                    tags.textContent = 'Tags: ' + bm.tags.join(', ');
+                    tags.className = 'text-sm text-gray-500';
+                    card.appendChild(tags);
+                }
+                // Draggabilité simplifiée (pour placeholder)
+                card.ondragstart = (e) => {
+                    e.dataTransfer.setData("text/plain", index);
+                };
+                card.ondrop = (e) => {
+                    e.preventDefault();
+                    // Gestion du drop (à implémenter si nécessaire)
+                };
+                card.ondragover = (e) => {
+                    e.preventDefault();
+                };
+                container.appendChild(card);
+            });
+        }
+        // Charger les bookmarks au démarrage
+        window.addEventListener('DOMContentLoaded', loadBookmarks);
+    </script>
+</body>
+
+</html>

@@ -3,7 +3,7 @@ The logger file.
 """
 
 
-from . import files_constants as file_const
+from . import dynamic_constants as file_const
 
 from logging import (
     StreamHandler, Formatter, Logger, getLogger,
