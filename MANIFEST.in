@@ -2,12 +2,18 @@
 include TODO.md
 include README.md
 include LICENSE.txt
+include CHANGELOG.md
+
+include requirements.txt
 
 # Resource
 recursive-include resources *
 
 # Examples
 recursive-include notebooks *
+
+# Documentation
+recursive-include docs *
 
 # Tests
 recursive-include tests *
