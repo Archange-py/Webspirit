@@ -2,6 +2,9 @@ pandas==2.3.0
 colorlog==6.9.0
 yt-dlp==2025.6.9
 ipywidgets==8.1.7
-rich==14.0.0
-textual==3.5.0
 beautifulsoup4==4.13.5
+
+fastapi==0.127.1
+uvicorn==0.40.0
+pystray==0.19.5
+pillow==12.0.0

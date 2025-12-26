@@ -7,19 +7,13 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   webspirit.addons
+   webspirit.application
    webspirit.classes
    webspirit.config
 
 Submodules
 ----------
-
-webspirit.downloader module
----------------------------
-
-.. automodule:: webspirit.downloader
-   :members:
-   :show-inheritance:
-   :undoc-members:
 
 webspirit.main module
 ---------------------

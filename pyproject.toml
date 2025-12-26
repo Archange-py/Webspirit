@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "webspirit"
-version = "0.0.2"
-description = "A Python package for downloading resources from the web and organizing your favorites"
-keywords = ["webspirit", "yt-dlp", "POO", "YouTube", "download", "favorites", "collections", "web-scrapping"]
+version = "0.0.3"
+description = "A Python package for downloading resources from the web and organizing your bookmarks"
+keywords = ["webspirit", "yt-dlp", "POO", "YouTube", "download", "bookmarks", "collections", "web-scrapping"]
 readme = "README.md"
 requires-python = ">=3.12.4"
 license = {text = "MIT"}
@@ -26,9 +26,12 @@ dependencies = [
   "colorlog==6.9.0",
   "yt-dlp==2025.6.9",
   "ipywidgets==8.1.7",
-  "rich==14.0.0",
-  "textual==3.5.0",
-  "beautifulsoup4==4.13.5"
+  "beautifulsoup4==4.13.5",
+
+  "fastapi==0.127.1",
+  "uvicorn==0.40.0",
+  "pystray==0.19.5",
+  "pillow==12.0.0"
 ]
 
 [project.urls]

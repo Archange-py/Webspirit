@@ -24,6 +24,8 @@
 
 - Ajouter une recherche automatique du fichier ffmpeg.exe dans le répertoire par défaut
 
+- ajouter une installation avec l'application, et donc si présente l'ajouts du requirements associé en plus de celui global
+
 ## Application
 
 - Création automatique d'un .exe avec un workflow github pour lancer l'application depuis windows

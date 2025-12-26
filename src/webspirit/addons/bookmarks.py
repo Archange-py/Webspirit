@@ -1,10 +1,10 @@
 from webspirit.config.logger import debug, info, error, warning, critical
 
-from webspirit.tools.jsonmanager import JSONManager
+from webspirit.classes.tools.jsonmanager import JSONManager
 
-from webspirit.tools.checktype import StrPath
+from webspirit.classes.tools.csvmanager import StrPath
 
-from webspirit.tools.contexterror import ecm
+from webspirit.classes.tools.contexterror import ecm
 
 from webspirit.config.constants import (
     HOME_DIR, DIR_TMP

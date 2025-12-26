@@ -12,6 +12,14 @@ webspirit.config.constants module
    :show-inheritance:
    :undoc-members:
 
+webspirit.config.dynamic\_constants module
+------------------------------------------
+
+.. automodule:: webspirit.config.dynamic_constants
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 webspirit.config.files\_constants module
 ----------------------------------------
 

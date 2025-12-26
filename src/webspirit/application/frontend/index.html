@@ -15,19 +15,17 @@
         <h1 class="text-2xl font-bold">Mes Bookmarks</h1>
         <!-- Bouton pour ouvrir l'app desktop (schéma personnalisé) -->
         <button onclick="window.location.href='myapp://open'"
-            class="mt-2 px-3 py-1 bg-white text-blue-600 rounded">Ouvrir dans
-            l'app desktop</button>
+            class="mt-2 px-3 py-1 bg-white text-blue-600 rounded">Ouvrir dans l'app desktop</button>
     </header>
     <main class="p-4">
         <!-- Zone de filtre par collections (simplifié) -->
         <section id="collections" class="mb-4">
-            <!-- Ici on pourrait ajouter des boutons pour filtrer par collection --
->
-</section>
-<!-- Conteneur des cartes de bookmarks -->
-            <div id="bookmarks" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Les cartes seront injectées ici par JavaScript -->
-            </div>
+            <!-- Ici on pourrait ajouter des boutons pour filtrer par collection -->
+        </section>
+        <!-- Conteneur des cartes de bookmarks -->
+        <div id="bookmarks" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Les cartes seront injectées ici par JavaScript -->
+        </div>
     </main>
     <script>
         // Fonction pour extraire le domaine d'une URL

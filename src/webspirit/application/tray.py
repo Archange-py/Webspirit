@@ -1,5 +1,4 @@
 # tray.py
-import threading
 import webbrowser
 import pystray
 from PIL import Image, ImageDraw
