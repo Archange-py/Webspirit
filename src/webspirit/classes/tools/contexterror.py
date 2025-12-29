@@ -55,7 +55,7 @@ class ErrorContextManager:
             if self.message:
                 log(self.message.replace('ERROR', ERROR).replace('EX_TYPE', EX_TYPE.__name__).replace('EX_VALUE', str(EX_VALUE)), self.level, self.logger)
 
-        return False if self._raise else True
+        return not self._raise
 
 
 ecm = ErrorContextManager

@@ -1,15 +1,22 @@
-# main.py
+
+from webspirit.application.desktop import start_window
+
+from webspirit.application.tray import start_tray
+
+from webspirit.application.server import app
+
+from webspirit.config.logger import Logger, DEBUG
+
 import threading
+
 import uvicorn
-from . import server
-from . import tray
+
 
 if __name__ == "__main__":
-    # Démarrer le serveur FastAPI dans un thread
     def start_server():
-        uvicorn.run(server.app, host="127.0.0.1", port=8000, log_level="debug")
+        uvicorn.run(app, host="127.0.0.1", port=8000, log_level=DEBUG)
 
-    server_thread = threading.Thread(target=start_server, daemon=True)
-    server_thread.start()
-    # Démarrer l'icône système (bloquant)
-    tray.setup_tray()
+    threading.Thread(target=start_server, daemon=True).start()
+    threading.Thread(target=start_tray, daemon=True).start()
+
+    start_window()

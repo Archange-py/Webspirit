@@ -3,7 +3,7 @@ The logger file.
 """
 
 
-from . import dynamic_constants as file_const
+import webspirit.config.parameters as file_const
 
 from logging import (
     StreamHandler, Formatter, Logger, getLogger,

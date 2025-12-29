@@ -14,7 +14,7 @@ ROOT_DIR: Path = Path(dirname(dirname(dirname(dirname(__file__)))))
 DIR_SRC: Path = ROOT_DIR / 'src'
 DIR_WEBSPIRIT: Path = DIR_SRC / 'webspirit'
 
-DIR_EXAMPLES: Path = DIR_WEBSPIRIT / 'examples'
+DIR_EXAMPLES: Path = ROOT_DIR / 'examples'
 DIR_EXAMPLES_DATA: Path = DIR_EXAMPLES / 'data'
 DIR_EXAMPLES_GENERATED: Path = DIR_EXAMPLES / 'generated'
 DIR_EXAMPLES_NOTEBOOKS: Path = DIR_EXAMPLES / 'notebooks'

@@ -4,7 +4,7 @@ Le fichier qui réuni de manière dynamique toutes le constantes utilisé par la
 
 
 from . import files_constants as files_const
-from . import dynamic_constants as dyn_const
+from . import parameters as dyn_const
 from .import logger
 
 from typing import Any

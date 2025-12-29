@@ -4,7 +4,7 @@ from webspirit.config.constants import DIR_TMP, PATH_TMP_MUSICS
 
 from webspirit.classes.tools.checktype import ValidatePathOrUrl
 
-from webspirit.classes.webfiles import StrPath, HyperLink
+from webspirit.classes.tools.typing import StrPath, HyperLink
 
 from pandas.errors import EmptyDataError
 

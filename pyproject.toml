@@ -28,6 +28,7 @@ dependencies = [
   "ipywidgets==8.1.7",
   "beautifulsoup4==4.13.5",
 
+  "pywebview==6.1.0",
   "fastapi==0.127.1",
   "uvicorn==0.40.0",
   "pystray==0.19.5",

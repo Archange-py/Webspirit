@@ -33,3 +33,6 @@ FFmpeg/
 docs/.doctrees/
 docs/_build/
 docs/build/
+
+# Examples files build with Notebooks
+generated/

@@ -26,6 +26,8 @@
 
 - ajouter une installation avec l'application, et donc si présente l'ajouts du requirements associé en plus de celui global
 
+- BUG: les StrPath ne renvoient pas un chemin complet quand on utilise l'opérateur /
+
 ## Application
 
 - Création automatique d'un .exe avec un workflow github pour lancer l'application depuis windows

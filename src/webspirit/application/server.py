@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from fastapi.responses import FileResponse
+from pathlib import Path
 
 # Modèle de Bookmark
 class Bookmark(BaseModel):
@@ -44,4 +45,6 @@ def root():
     """
     Sert le fichier index.html de l'interface web.
     """
-    return FileResponse("frontend/index.html")
+    base = Path(__file__).resolve().parent
+    file_path = base / "frontend" / "index.html"
+    return FileResponse(str(file_path))
