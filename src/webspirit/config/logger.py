@@ -18,8 +18,6 @@ from logging.handlers import RotatingFileHandler
 
 from colorlog import ColoredFormatter
 
-from rich.console import Console
-
 from functools import partial
 
 from pathlib import Path
@@ -36,7 +34,6 @@ os.makedirs(DIR_LOGS, exist_ok=True)
 
 PATH_LOGS: Path = DIR_LOGS / LOG_NAME
 
-CONSOLE = Console()
 STACK_LEVEL: int = 5
 LOG_LEVEL: int = DEBUG
 BACKUP_COUNT: int = 3 # Up to 3 backup files
