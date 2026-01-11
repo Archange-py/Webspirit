@@ -4,6 +4,14 @@ webspirit.application package
 Submodules
 ----------
 
+webspirit.application.desktop module
+------------------------------------
+
+.. automodule:: webspirit.application.desktop
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 webspirit.application.main module
 ---------------------------------
 

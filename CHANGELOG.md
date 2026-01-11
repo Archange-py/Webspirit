@@ -9,10 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Implémentation de la configuration des paramètres, avec une interface grâce à IPython
 - Construction stable de la documentation avec sphinx dans un nouveau répertoire docs/
 - Ajout d'un fichier requirement.txt pour les dépendances spécifiques à sphinx
 - Ajout d'une documentation claire et efficace dans chaque fichier pour les fonctions et les classes
-- Ajout d'un fichier CHANGELOG.md claire et efficace
+- Ajout d'un fichier CHANGELOG.md mise à jour
 
 ### Fixed
 
@@ -22,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Mise en place de la gestion des fichiers comme json
+- Configuration stable des paramètres par défaut en changeant les fichiers json correspondants
 - Modification du README.md
 - Refactorisation de chaque fichier de la librairie
 - Reconfiguration de l'arbre des dossiers et fichiers

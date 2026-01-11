@@ -28,10 +28,18 @@ webspirit.classes.tools.csvmanager module
    :show-inheritance:
    :undoc-members:
 
-webspirit.classes.tools.jsonmanager module
-------------------------------------------
+webspirit.classes.tools.manager module
+--------------------------------------
 
-.. automodule:: webspirit.classes.tools.jsonmanager
+.. automodule:: webspirit.classes.tools.manager
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+webspirit.classes.tools.typing module
+-------------------------------------
+
+.. automodule:: webspirit.classes.tools.typing
    :members:
    :show-inheritance:
    :undoc-members:

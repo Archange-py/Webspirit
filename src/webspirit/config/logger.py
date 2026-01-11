@@ -1,9 +1,11 @@
 """
-The logger file.
+Le fichier qui regroupe toutes les constantes pour le logging, et la définition
+de la gestion du logging dans la console, avec les fichiers ou encore les 
+Notebooks pour avoir une gestion centralisé dans tous le projet.
 """
 
 
-import webspirit.config.parameters as file_const
+from webspirit.config.constants import DIR_WEBSPIRIT
 
 from logging import (
     StreamHandler, Formatter, Logger, getLogger,
@@ -20,10 +22,19 @@ from rich.console import Console
 
 from functools import partial
 
+from pathlib import Path
+
 from typing import Any
 
+import os
 
-file_const.DIR_LOGS.mkdir(exist_ok=True)
+
+LOG_NAME: str = 'webspirit.log'
+DIR_LOGS: Path = DIR_WEBSPIRIT / 'logs'
+
+os.makedirs(DIR_LOGS, exist_ok=True)
+
+PATH_LOGS: Path = DIR_LOGS / LOG_NAME
 
 CONSOLE = Console()
 STACK_LEVEL: int = 5
@@ -73,7 +84,7 @@ def get_console_formatter() -> NotebookFormatter:
 
 def get_file_handler() -> RotatingFileHandler:
     return RotatingFileHandler(
-        filename=file_const.PATH_LOGS,
+        filename=PATH_LOGS,
         backupCount=BACKUP_COUNT,
         maxBytes=MAX_BYTES,
         encoding='utf-8'
@@ -135,3 +146,6 @@ __all__: list[str] = [
     'error',
     'critical'
 ]
+
+for cst_var in ['DIR_WEBSPIRIT']:
+    __all__.remove(cst_var)

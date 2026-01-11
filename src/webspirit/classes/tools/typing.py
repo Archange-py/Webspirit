@@ -65,10 +65,7 @@ class StrPath(Path, _PathOrURL):
     def __new__(cls, *paths: 'str | Path', exist: bool = True):
         string = paths[0] if len(paths) == 1 else Path(*paths)
 
-        if not exist:
-            debug(f"Skip existing test for '{string}'")
-
-        elif not (StrPath.is_path(string) or StrPath.is_path(string, dir=True)):
+        if not (StrPath.is_path(string) or StrPath.is_path(string, dir=True)) and exist:
             _re(f"'{string}' must be a valid path to a file or a directory")
 
         return super().__new__(cls, *paths)

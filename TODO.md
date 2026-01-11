@@ -18,15 +18,23 @@
 
 - Correctif - importer (depuis l'application automatique si le module FFMPEG n'est pas présent) manuellement FFMPEG
 
+- Ajouter une recherche automatique du fichier ffmpeg.exe dans le répertoire par défaut
+
 - générer les variables de manière automatique de toute l'arborescence des fichiers, ou seulement dans certain dossier comme downloads
 
 - Ajouts de test pour vérifier que toutes les variables de types chemin existe (peut être tout convertir en StrPath d'office ?), et si ce sont des directories, ajouter sa création si il n'existe pas, comme par exemple pour logs ou user
 
-- Ajouter une recherche automatique du fichier ffmpeg.exe dans le répertoire par défaut
-
 - ajouter une installation avec l'application, et donc si présente l'ajouts du requirements associé en plus de celui global
 
 - BUG: les StrPath ne renvoient pas un chemin complet quand on utilise l'opérateur /
+
+- Comment obtenir le nom d'un notebooks dynamiquement et son chemin d'accès ?
+
+- BUG: un fichier de log en plus apparaît sûrement du au handler de la console
+
+- Utiliser un .gitignore pour le tree, et le formater en html en IPython
+
+- Ajouter une interface moderne pour les paramètres avec IPython
 
 ## Application
 

@@ -1,6 +1,6 @@
 from webspirit.config.logger import debug, info, error, warning, critical
 
-from webspirit.classes.tools.jsonmanager import JSONManager
+from webspirit.classes.tools.manager import JsonManager
 
 from webspirit.classes.tools.csvmanager import StrPath
 
@@ -15,7 +15,7 @@ EDGE: str = 'EDGE'
 
 # Asynchrone ???
 
-class Bookmarks(JSONManager):
+class Bookmarks(JsonManager):
     def __init__(self, navigator: str | None = None):
         self.navigator: str = self.find_navigator() if navigator is None else navigator
         self.path: StrPath = self.load_bookmarks()

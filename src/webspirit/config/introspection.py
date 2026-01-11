@@ -5,17 +5,19 @@ pour les Jupiter Notebooks, ou encore les fichiers Readme pour la présentation 
 
 from webspirit.config.constants import DIR_WEBSPIRIT, PATH_GITIGNORE
 
-from webspirit.classes.webfiles import HyperLink, StrPath
+from webspirit.classes.tools.typing import HyperLink, StrPath
 
 from webspirit.classes.tools.contexterror import ecm, re
 
 from webspirit.classes.tools.checktype import CheckType
 
+from webspirit.classes.tools.manager import JsonManager
+
 from importlib import import_module
 
 from typing import Any
 
-import json, os
+import json
 
 
 __all__ : list[str] = [
@@ -26,20 +28,38 @@ __all__ : list[str] = [
 
 
 def show(obj: Any):
+    """Affiche la représentation d'un objet grâce à str et repr
+
+    Args:
+        obj (Any): L'objet en question.
+    """
     print('str  :', obj, '\nrepr :', repr(obj))
 
-@CheckType('notebook')
-def links_from_cell(notebook: StrPath, index: int = 0, type: type = HyperLink) -> list[type]:
-    with notebook.open('r', encoding='utf-8') as f:
-        notebook = json.load(f)
+@CheckType('path')
+def links_from_cell(path: StrPath, index: int = 0, type: type = HyperLink) -> list[type]:
+    """Permet dans un Jupiter Notebooks de récupérer des chaînes de caractères lignes
+    par lignes dans le type voulue dans une cellule de type 'raw'
 
-    cell: dict = notebook['cells'][index]
+    Args:
+        path (StrPath): Le chemin vers le Notebooks.
+        index (int, optional): Le numéro de la cellule auquel il faut prendre en compte les cellules en Markdown, Python, ... Defaults to 0.
+        type (type, optional): Ce en quoi les chaines de caractères seront converties. Defaults to HyperLink.
+
+    Returns:
+        list[type]: Une liste avec les instances du type spécifié.
+    """
+    with path.open('r', encoding='utf-8') as f:
+        notebook: dict = json.load(f)
+
+    manager: JsonManager = JsonManager(StrPath(f"{path.dirname()}/{path.stem}.json", exist=False)).save(notebook)
+    cell: dict = manager['cells'][index]
+    manager.delete()
 
     return [
         type(link.removesuffix('\n').removesuffix('  ')) for link in cell['source']
     ]   if cell['cell_type'] in ('markdown', 'raw') else ['']
 
-@CheckType('root', 'ignore', 'indent', 'branch', 'close', 'empty')
+#@CheckType('root', 'ignore')
 def tree_directory(
         root: StrPath = DIR_WEBSPIRIT,
         ignore: StrPath = PATH_GITIGNORE,
@@ -72,6 +92,8 @@ def tree_directory(
     """
     if not StrPath.is_path(root, dir=True):
         re(f"The path {root} isn't a valid directory")
+
+    root: StrPath = root.absolute()
 
     @CheckType('directory')
     def get_entries(directory: StrPath) -> list[StrPath] | None:

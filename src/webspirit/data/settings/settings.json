@@ -1,0 +1,98 @@
+{
+  "language": {
+    "type": "list",
+    "label": "Langue de l'application",
+    "default": null,
+    "source": {
+      "object": "webspirit.classes.tools.manager.JsonManager",
+      "params": [
+        "languages.json"
+      ],
+      "default": {
+        "value": "fr",
+        "attr": null,
+        "index": null
+      }
+    }
+  },
+  "dark_mode": {
+    "type": "bool",
+    "label": "Mode sombre",
+    "default": false,
+    "source": {
+      "object": null,
+      "params": [
+        null
+      ],
+      "default": {
+        "value": null,
+        "attr": null,
+        "index": null
+      }
+    }
+  },
+  "theme": {
+    "type": "list",
+    "label": "Thème visuel",
+    "default": null,
+    "source": {
+      "object": "webspirit.classes.tools.manager.JsonManager",
+      "params": [
+        "theme.json"
+      ],
+      "default": {
+        "value": "light",
+        "attr": null,
+        "index": null
+      }
+    }    
+  },
+  "username": {
+    "type": "text",
+    "label": "Nom d'utilisateur",
+    "default": "DefaultUser",
+    "source": {
+      "object": null,
+      "params": [
+        null
+      ],
+      "default": {
+        "value": null,
+        "attr": null,
+        "index": null
+      }
+    }
+  },
+  "launch_animation": {
+    "type": "bool",
+    "label": "Animation de démarrage",
+    "default": true,
+    "source": {
+      "object": null,
+      "params": [
+        null
+      ],
+      "default": {
+        "value": null,
+        "attr": null,
+        "index": null
+      }
+    }
+  },
+  "path_FFmpeg": {
+    "type": "text",
+    "label": "Chemin vers l'exécutable ffmpeg.exe",
+    "default": null,
+    "source": {
+      "object": "webspirit.config.constants.PATH_FFMPEG",
+      "params": [
+        null
+      ],
+      "default": {
+        "value": null,
+        "attr": null,
+        "index": null
+      }
+    }
+  }
+}
