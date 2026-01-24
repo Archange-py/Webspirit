@@ -1,0 +1,1130 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; Webspirit 0.0.4 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=8c5712d9"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">webspirit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contact.html">
+    contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="reference/modules.html">
+    webspirit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contact.html">
+    contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="reference/modules.html">
+    webspirit
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.add_bookmark">add_bookmark() (in module webspirit.application.server)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.attr">attr (webspirit.config.settings.Parameter property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager">BaseManager (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager">(class in webspirit.classes.tools.manager)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.Bookmark">Bookmark (class in webspirit.application.server)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.ConfigManager.build">build() (webspirit.config.settings.ConfigManager method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.SuffixPath.check_ext">check_ext() (webspirit.classes.tools.SuffixPath static method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.SuffixPath.check_ext">(webspirit.classes.tools.typing.SuffixPath static method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CheckType">CheckType (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.checktype.CheckType">(class in webspirit.classes.tools.checktype)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.Bookmark.collection">collection (webspirit.application.server.Bookmark attribute)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.ConfigManager">ConfigManager (class in webspirit.config.settings)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CheckType.convert">convert() (webspirit.classes.tools.CheckType method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.checktype.CheckType.convert">(webspirit.classes.tools.checktype.CheckType method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.copy">copy() (webspirit.classes.tools.BaseManager method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.HyperLink.copy">(webspirit.classes.tools.HyperLink method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.copy">(webspirit.classes.tools.manager.BaseManager method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.StrPath.copy">(webspirit.classes.tools.StrPath method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.SuffixPath.copy">(webspirit.classes.tools.SuffixPath method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.HyperLink.copy">(webspirit.classes.tools.typing.HyperLink method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.StrPath.copy">(webspirit.classes.tools.typing.StrPath method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.SuffixPath.copy">(webspirit.classes.tools.typing.SuffixPath method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.critical">critical() (in module webspirit.config.logger)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.CsvManager">CsvManager (class in webspirit.classes.tools.manager)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CsvPath">CsvPath (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.CsvPath">(class in webspirit.classes.tools.typing)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.data">data (webspirit.classes.tools.BaseManager property)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.data">(webspirit.classes.tools.manager.BaseManager property)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.debug">debug() (in module webspirit.config.logger)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.CsvManager.decode">decode() (webspirit.classes.tools.manager.CsvManager method)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.default">default (webspirit.config.settings.Parameter property)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.default_src">default_src (webspirit.config.settings.Parameter property)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.delete">delete() (webspirit.classes.tools.BaseManager method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.delete">(webspirit.classes.tools.manager.BaseManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.delete_json">delete_json() (in module webspirit.classes.tools.manager)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.StrPath.dirname">dirname() (webspirit.classes.tools.StrPath method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.SuffixPath.dirname">(webspirit.classes.tools.SuffixPath method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.StrPath.dirname">(webspirit.classes.tools.typing.StrPath method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.SuffixPath.dirname">(webspirit.classes.tools.typing.SuffixPath method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.IPythonConfig.display">display() (webspirit.config.settings.IPythonConfig method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.html#webspirit.classes.ecm">ecm (in module webspirit.classes)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.ecm">(in module webspirit.classes.tools)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.contexterror.ecm">(in module webspirit.classes.tools.contexterror)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.CsvManager.encode">encode() (webspirit.classes.tools.manager.CsvManager method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.error">error() (in module webspirit.config.logger)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.ErrorContextManager">ErrorContextManager (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.contexterror.ErrorContextManager">(class in webspirit.classes.tools.contexterror)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.CsvManager.extension">extension (webspirit.classes.tools.manager.CsvManager attribute)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.JsonManager.extension">(webspirit.classes.tools.manager.JsonManager attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CheckType.function">function (webspirit.classes.tools.CheckType attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.get_bookmarks">get_bookmarks() (in module webspirit.application.server)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.get_console_formatter">get_console_formatter() (in module webspirit.config.logger)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.get_default">get_default() (webspirit.config.settings.Parameter method)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.get_default_obj">get_default_obj() (webspirit.config.settings.Parameter method)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.get_file_formatter">get_file_formatter() (in module webspirit.config.logger)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.get_file_handler">get_file_handler() (in module webspirit.config.logger)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.get_logger">get_logger() (in module webspirit.config.logger)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.get_obj">get_obj() (webspirit.config.settings.Parameter method)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.get_options">get_options() (webspirit.config.settings.Parameter method)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.get_widgets">get_widgets() (webspirit.config.settings.Parameter method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.HyperLink">HyperLink (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.HyperLink">(class in webspirit.classes.tools.typing)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.HyperLink.id">id (webspirit.classes.tools.HyperLink property)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.HyperLink.id">(webspirit.classes.tools.typing.HyperLink property)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.index">index (webspirit.config.settings.Parameter property)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.info">info() (in module webspirit.config.logger)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.ManagerMeta.instances">instances (webspirit.classes.tools.manager.ManagerMeta attribute)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.ManagerMeta.instances">(webspirit.classes.tools.ManagerMeta attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.IPythonConfig">IPythonConfig (class in webspirit.config.settings)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.StrPath.is_path">is_path() (webspirit.classes.tools.StrPath static method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.StrPath.is_path">(webspirit.classes.tools.typing.StrPath static method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.HyperLink.is_url">is_url() (webspirit.classes.tools.HyperLink static method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.HyperLink.is_url">(webspirit.classes.tools.typing.HyperLink static method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.JsonManager">JsonManager (class in webspirit.classes.tools.manager)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.JsonPath">JsonPath (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.JsonPath">(class in webspirit.classes.tools.typing)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.label">label (webspirit.config.settings.Parameter property)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.introspection.links_from_cell">links_from_cell() (in module webspirit.config.introspection)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.load">load() (webspirit.classes.tools.BaseManager method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.load">(webspirit.classes.tools.manager.BaseManager method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.CsvManager.load">(webspirit.classes.tools.manager.CsvManager method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.JsonManager.load">(webspirit.classes.tools.manager.JsonManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.load_json">load_json() (in module webspirit.classes.tools.manager)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.load_raw">load_raw() (webspirit.classes.tools.BaseManager method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.load_raw">(webspirit.classes.tools.manager.BaseManager method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.CsvManager.load_raw">(webspirit.classes.tools.manager.CsvManager method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.JsonManager.load_raw">(webspirit.classes.tools.manager.JsonManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.log">log() (in module webspirit.config.logger)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.ManagerMeta">ManagerMeta (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.ManagerMeta">(class in webspirit.classes.tools.manager)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.Bookmark.model_config">model_config (webspirit.application.server.Bookmark attribute)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="reference/webspirit.html#module-webspirit">webspirit</a>
+</li>
+        <li><a href="reference/webspirit.addons.html#module-webspirit.addons">webspirit.addons</a>
+</li>
+        <li><a href="reference/webspirit.application.html#module-webspirit.application">webspirit.application</a>
+</li>
+        <li><a href="reference/webspirit.application.html#module-webspirit.application.desktop">webspirit.application.desktop</a>
+</li>
+        <li><a href="reference/webspirit.application.html#module-webspirit.application.server">webspirit.application.server</a>
+</li>
+        <li><a href="reference/webspirit.classes.html#module-webspirit.classes">webspirit.classes</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools">webspirit.classes.tools</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.checktype">webspirit.classes.tools.checktype</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.contexterror">webspirit.classes.tools.contexterror</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.csvmanager">webspirit.classes.tools.csvmanager</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.manager">webspirit.classes.tools.manager</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.typing">webspirit.classes.tools.typing</a>
+</li>
+        <li><a href="reference/webspirit.classes.html#module-webspirit.classes.webfiles">webspirit.classes.webfiles</a>
+</li>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config">webspirit.config</a>
+</li>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.constants">webspirit.config.constants</a>
+</li>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.introspection">webspirit.config.introspection</a>
+</li>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.logger">webspirit.config.logger</a>
+</li>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.settings">webspirit.config.settings</a>
+</li>
+        <li><a href="reference/webspirit.html#module-webspirit.main">webspirit.main</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.obj">obj (webspirit.config.settings.Parameter property)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.object">object (webspirit.config.settings.Parameter property)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.options">options (webspirit.config.settings.Parameter property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter">Parameter (class in webspirit.config.settings)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.params">params (webspirit.config.settings.Parameter property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.raise_error">raise_error() (in module webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.contexterror.raise_error">(in module webspirit.classes.tools.contexterror)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.raw_data">raw_data (webspirit.classes.tools.BaseManager property)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.raw_data">(webspirit.classes.tools.manager.BaseManager property)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.re">re() (in module webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.contexterror.re">(in module webspirit.classes.tools.contexterror)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.registry">registry (webspirit.classes.tools.BaseManager attribute)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.registry">(webspirit.classes.tools.manager.BaseManager attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.StrPath.relpath">relpath() (webspirit.classes.tools.StrPath method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.SuffixPath.relpath">(webspirit.classes.tools.SuffixPath method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.StrPath.relpath">(webspirit.classes.tools.typing.StrPath method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.SuffixPath.relpath">(webspirit.classes.tools.typing.SuffixPath method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.repr_format">repr_format (webspirit.classes.tools.BaseManager attribute)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.repr_format">(webspirit.classes.tools.manager.BaseManager attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.ConfigManager.reset">reset() (webspirit.config.settings.ConfigManager method)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.IPythonConfig.reset_config">reset_config() (webspirit.config.settings.IPythonConfig method)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.resource">resource (webspirit.config.settings.Parameter property)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CheckType.RETURN">RETURN (webspirit.classes.tools.CheckType attribute)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.checktype.CheckType.RETURN">(webspirit.classes.tools.checktype.CheckType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.root">root() (in module webspirit.application.server)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.save">save() (webspirit.classes.tools.BaseManager method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.save">(webspirit.classes.tools.manager.BaseManager method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.CsvManager.save">(webspirit.classes.tools.manager.CsvManager method)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.JsonManager.save">(webspirit.classes.tools.manager.JsonManager method)</a>
+</li>
+        <li><a href="reference/webspirit.config.html#webspirit.config.settings.ConfigManager.save">(webspirit.config.settings.ConfigManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.IPythonConfig.save_config">save_config() (webspirit.config.settings.IPythonConfig method)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.save_json">save_json() (in module webspirit.classes.tools.manager)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CheckType.SELF">SELF (webspirit.classes.tools.CheckType attribute)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.checktype.CheckType.SELF">(webspirit.classes.tools.checktype.CheckType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.serial">serial() (webspirit.config.settings.Parameter method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.introspection.show">show() (in module webspirit.config.introspection)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.source">source (webspirit.config.settings.Parameter property)</a>
+</li>
+      <li><a href="reference/webspirit.application.html#webspirit.application.desktop.start_window">start_window() (in module webspirit.application.desktop)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.StrPath">StrPath (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.StrPath">(class in webspirit.classes.tools.typing)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CsvPath.SUFFIX">SUFFIX (webspirit.classes.tools.CsvPath attribute)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.JsonPath.SUFFIX">(webspirit.classes.tools.JsonPath attribute)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.CsvPath.SUFFIX">(webspirit.classes.tools.typing.CsvPath attribute)</a>
+</li>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.JsonPath.SUFFIX">(webspirit.classes.tools.typing.JsonPath attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.SuffixPath">SuffixPath (class in webspirit.classes.tools)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.typing.SuffixPath">(class in webspirit.classes.tools.typing)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.Bookmark.tags">tags (webspirit.application.server.Bookmark attribute)</a>
+</li>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.Bookmark.title">title (webspirit.application.server.Bookmark attribute)</a>
+</li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.to_dict">to_dict() (webspirit.classes.tools.BaseManager method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.to_dict">(webspirit.classes.tools.manager.BaseManager method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.BaseManager.to_list">to_list() (webspirit.classes.tools.BaseManager method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.manager.BaseManager.to_list">(webspirit.classes.tools.manager.BaseManager method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.introspection.tree_directory">tree_directory() (in module webspirit.config.introspection)</a>
+</li>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.type">type (webspirit.config.settings.Parameter property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.application.html#webspirit.application.server.Bookmark.url">url (webspirit.application.server.Bookmark attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CheckType.validate_and_convert_type">validate_and_convert_type() (webspirit.classes.tools.CheckType method)</a>
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.checktype.CheckType.validate_and_convert_type">(webspirit.classes.tools.checktype.CheckType method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.settings.Parameter.value">value (webspirit.config.settings.Parameter property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/webspirit.config.html#webspirit.config.logger.warning">warning() (in module webspirit.config.logger)</a>
+</li>
+      <li>
+    webspirit
+
+      <ul>
+        <li><a href="reference/webspirit.html#module-webspirit">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.addons
+
+      <ul>
+        <li><a href="reference/webspirit.addons.html#module-webspirit.addons">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.application
+
+      <ul>
+        <li><a href="reference/webspirit.application.html#module-webspirit.application">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.application.desktop
+
+      <ul>
+        <li><a href="reference/webspirit.application.html#module-webspirit.application.desktop">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.application.server
+
+      <ul>
+        <li><a href="reference/webspirit.application.html#module-webspirit.application.server">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.classes
+
+      <ul>
+        <li><a href="reference/webspirit.classes.html#module-webspirit.classes">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.classes.tools
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.classes.tools.checktype
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.checktype">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.classes.tools.contexterror
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.contexterror">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.classes.tools.csvmanager
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.csvmanager">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    webspirit.classes.tools.manager
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.manager">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.classes.tools.typing
+
+      <ul>
+        <li><a href="reference/webspirit.classes.tools.html#module-webspirit.classes.tools.typing">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.classes.webfiles
+
+      <ul>
+        <li><a href="reference/webspirit.classes.html#module-webspirit.classes.webfiles">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.config
+
+      <ul>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.config.constants
+
+      <ul>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.constants">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.config.introspection
+
+      <ul>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.introspection">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.config.logger
+
+      <ul>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.logger">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.config.settings
+
+      <ul>
+        <li><a href="reference/webspirit.config.html#module-webspirit.config.settings">module</a>
+</li>
+      </ul></li>
+      <li>
+    webspirit.main
+
+      <ul>
+        <li><a href="reference/webspirit.html#module-webspirit.main">module</a>
+</li>
+      </ul></li>
+      <li><a href="reference/webspirit.classes.tools.html#webspirit.classes.tools.CheckType.without_parentheses">without_parentheses (webspirit.classes.tools.CheckType attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Archange.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
