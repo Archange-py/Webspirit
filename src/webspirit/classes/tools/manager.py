@@ -1,6 +1,6 @@
 """
-Implémentation des différentes classes pour la gestion des fichiers, comme json ou csv,
-comportant des données à manipuler.
+Implémentation des différentes classes pour la gestion des fichiers,
+comme json ou csv, comportant des données à manipuler.
 """
 
 
@@ -20,7 +20,7 @@ from threading import Lock
 
 from shutil import copy2
 
-import json, os
+import json, csv, os
 
 
 __all__: list[str] = [
@@ -184,7 +184,9 @@ class BaseManager(ABC, metaclass=ManagerMeta):
             return self._data
 
         else:
-            re('Les données ne peuvent pas être récupérées sous un format de type dict')
+            with ecm('Les données ne peuvent pas être récupérées sous un format de type dict'):
+                return dict(self._data)
+
 
     def to_list(self) -> list:
         """Retourne les données du manager sous forme de liste.
@@ -199,7 +201,8 @@ class BaseManager(ABC, metaclass=ManagerMeta):
             return self._data
 
         else:
-            re('Les données ne peuvent pas être récupérées sous un format de type list')
+            with ecm('Les données ne peuvent pas être récupérées sous un format de type list'):
+                return list(self._data.items())
 
 
     @abstractmethod
@@ -289,7 +292,7 @@ def load_json(path: StrPath) -> JsonManager:
     """
     return JsonManager(path)
 
-def save_json(data: dict | list | JsonManager | None, path: StrPath | None = None) -> JsonManager:
+def save_json(data: dict | list | JsonManager | None = None, path: StrPath | None = None) -> JsonManager:
     """Sauvegarde des données json dans un fichier en gérant plusieurs cas d'entrée. Cette fonction peut utiliser soit des données brutes, soit un JsonManager existant, et créer ou mettre à jour le fichier cible.
 
     Args:
@@ -327,8 +330,105 @@ def delete_json(path: StrPath | JsonManager):
 
 
 class CsvManager(BaseManager, extension='.csv'):
-    def load(self):
-        print("Loading CSV")
+    def encode(self, data: list[list[str]]) -> dict[str, list[str]]:
+        return {
+            header:column
+            for header, column in zip(
+                data[0],
+                [
+                    [line[i] for line in data[1:]]
+                    for i in range(len(data[0]))
+                ]
+            )
+        }
+
+    def decode(self, data: dict[str, list[str]]) -> list[list[str]]:
+        lines: list[list[str]] = [list(data.keys())]
+        lines.extend([
+            [
+                data[key][i] for key in data
+            ]
+            for i in range(len(list(data.values())[0]))
+        ])
+
+        return lines
+
+    def load_raw(self) -> list:
+        with ecm(f"Une erreur est survenue lors du chargement de {self.path.relpath()}ERROR", _raise=True):
+            with self.path.open('r', encoding='utf-8') as file:
+                data: list = file.readlines()
+
+                info(f"Load '{self.path.name}' in '{self.path.dirname().relpath()}' directory")
+
+        self._raw_data: list = data
+
+        return self._raw_data
+
+    def load(self) -> Self:
+        self._data: dict[str, list[str]] = self.encode(list(csv.reader(self.load_raw())))
+
+        return self
+
+    def save(self, data: dict | list | None = None) -> Self:
+        if data is None:
+            data = self._data
+
+        with ecm(f"Une erreur est survenue lors de la sauvegarde de {self.path.relpath()}ERROR", _raise=True):
+            with self.path.open('w', encoding='utf-8') as file:
+                csv.writer(file, lineterminator='\n').writerows(self._data if isinstance(data, list) else self.decode(self._data))
+
+                info(f"Save {self.path.name} in '{self.path.dirname().relpath()}'")
+
+        self._data = data
+    
+        return self
+
+def load_csv(path: StrPath) -> CsvManager:
+    """Crée un gestionnaire csv pour le fichier fourni.
+
+    Args:
+        path (StrPath): Le chemin vers le fichier csv.
+
+    Returns:
+        CsvManager: Une instance de CsvManager associée au fichier fourni.
+    """
+    return CsvManager(path)
+
+def save_csv(data: dict | list | CsvManager | None = None, path: StrPath | None = None) -> CsvManager:
+    """Sauvegarde des données csv dans un fichier en gérant plusieurs cas d'entrée. Cette fonction peut utiliser soit des données brutes, soit un CsvManager existant, et créer ou mettre à jour le fichier cible.
+
+    Args:
+        data (dict | list | CsvManager | None): Les données à sauvegarder ou un CsvManager existant. Peut être None si un chemin est fourni pour charger et sauvegarder.
+        path (StrPath | None): Le chemin vers le fichier csv à sauvegarder. Peut être None si un CsvManager est fourni.
+
+    Returns:
+        CsvManager: Une instance de CsvManager correspondant au fichier sauvegardé.
+
+    Raises:
+        ValueError: Si ni les données ni le chemin ne sont fournis.
+    """
+    if data is None and path is None:
+        re("Vous devez fournir à minima des données et/ou un chemin pour sauvegarder le fichier csv", error=ValueError)
+
+    elif data is None:
+        return CsvManager(path).save()
+
+    elif path is None and isinstance(data, CsvManager):
+        return data.save()
+
+    else:
+        return CsvManager(path).save(data)
+
+def delete_csv(path: StrPath | CsvManager):
+    """Supprime un fichier csv en acceptant soit un chemin soit un manager.
+
+    Args:
+        path (StrPath | CsvManager): Le chemin vers le fichier csv ou une instance de CsvManager pointant vers ce fichier.
+    """
+    if isinstance(path, CsvManager):
+        path: StrPath = path.path
+
+    CsvManager(path).delete()
 
 
 @CheckType

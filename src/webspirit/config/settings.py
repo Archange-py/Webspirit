@@ -127,10 +127,7 @@ class Parameter(dict):
             return widgets.Dropdown(options=self.options, value=self.resource, description=self.label)
 
         elif self.type == 'path':
-            w = widgets.Text(value=self.resource or '', description=self.label)
-            w.placeholder = "Chemin du dossier/fichier ..."
-
-            return w
+            return widgets.Text(value=self.resource or '', description=self.label, placeholder="Chemin du dossier/fichier ...")
 
         return None
 
@@ -196,7 +193,7 @@ class ConfigManager(dict):
 
     def __str__(self) -> str:
         return json.dumps({
-            name: parameter.resource for name, parameter in self.config.items()
+            name: parameter.serial() for name, parameter in self.config.items()
         }, indent=2, ensure_ascii=False)
 
     __repr__ = __str__
@@ -247,26 +244,42 @@ class IPythonConfig:
         self.manager.user.save({
             k: w.value for k, w in self.widgets_map.items()
         })
+        self.status.value = "<b style='color:green'>Configuration sauvegardée ✔</b>"
+        self.json.value = f"<i>{self.manager}</i>"
 
     def reset_config(self, *_):
-        self.manager.reset(list(self.manager.keys()))
+        self.manager.reset()
+        self.status.value = "<b style='color:orange'>Configuration réinitialisée</b>"
+        self.json.value = f"<i>{self.manager}</i>"
 
     def display(self) -> DisplayHandle:
         """Construit et affiche l'interface de configuration interactive dans un notebook IPython"""
+        self.status = widgets.HTML()
+        self.status.value = "<b style='color:blue'>Initialisation de la configuration</b>"
+
+        self.json = widgets.HTML()
+        self.json.value = f"<i>{self.manager}</i>"
+
         for parameter in self.manager.config.values():
             widget = parameter.get_widgets()
             self.widgets_map[parameter.name] = widget
             self.ui_elements.append(widget)
 
-        save_button = widgets.Button(description='Save')
-        save_button.on_click(self.save_config)
+        save = widgets.Button(description='💾 Save', button_style='success')
+        save.on_click(self.save_config)
 
-        reset_button = widgets.Button(description='Reset')
-        reset_button.on_click(self.reset_config)
+        reset = widgets.Button(description='🧽 Reset', button_style='warning')
+        reset.on_click(self.reset_config)
 
-        self.ui_elements.append(widgets.HBox([save_button, reset_button]))
-
-        return display(widgets.VBox(self.ui_elements))
+        return display(
+            widgets.VBox([
+                widgets.HTML('<h2>⚙️ Configuration WebSpirit</h2>'),
+                widgets.VBox(self.ui_elements, layout=widgets.Layout(gap="20px")),
+                widgets.HBox([save, reset]),
+                self.status,
+                self.json,
+            ])
+        )
 
 INTERACTIVE: IPythonConfig = IPythonConfig(SETTINGS)
 

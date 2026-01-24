@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Mise en place de la gestion des fichiers comme json
+- Mise en place de la gestion des fichiers de données comme json ou csv
 - Configuration stable des paramètres par défaut en changeant les fichiers json correspondants
 - Modification du README.md
 - Refactorisation de chaque fichier de la librairie

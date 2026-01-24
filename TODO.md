@@ -6,9 +6,11 @@
 
 - Il faut qu'il soit possible de donner pour CheckType un dictionnaire valeur:annotation soit plusieurs type à tester ou un ... je me comprends
 
+- Il doit y avoir une annotation avec plusieurs types possibles, et que les tests soient effectué à chaque fois
+
 - Création d'une classe Annotation
 
-- Fichier .template pour une arborescence pré-cré de dossiers type comme musiques, vidéo - séries, sagas, film, youtube, ...
+- Fichier .template pour une arborescence pré-créé de dossiers type comme musiques, vidéo - séries, sagas, film, youtube, ...
 
 - Fichier .csv pour lier les fichiers télécharger avec leurs fichiers .json, qui servira à lier toutes les métadonnées possibles suivant le type du fichier : image, vidéo, sous-titre, ... 
 
@@ -30,11 +32,11 @@
 
 - Comment obtenir le nom d'un notebooks dynamiquement et son chemin d'accès ?
 
-- BUG: un fichier de log en plus apparaît sûrement du au handler de la console
-
 - Utiliser un .gitignore pour le tree, et le formater en html en IPython
 
 - Ajouter une interface moderne pour les paramètres avec IPython
+
+- Ajouter le nombre de Mega téléchargé puis faire des graphique mensuel, dans un tableau de bord 
 
 ## Application
 
